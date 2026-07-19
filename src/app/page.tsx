@@ -51,7 +51,7 @@ export default function Home() {
       <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16">
         {/* Logo */}
         <div className="flex items-center gap-3 mb-12">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl" style={{ background: "#FF6B00" }}>P</div>
+          <img src="/logo-icon-v3.svg" alt="PawnPass" className="w-12 h-12" />
           <div className="flex flex-col">
             <span className="text-2xl font-bold tracking-tight text-white leading-none">Pawn<span style={{ color: "#FF6B00" }}>Pass</span></span>
             <span className="text-[9px] font-medium tracking-[2px] text-gray-600 mt-1">DIGITAL PAWNBROKER</span>

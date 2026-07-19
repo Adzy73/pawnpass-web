@@ -18,7 +18,6 @@ async function decrypt(session: string | undefined = "") {
 
 // Routes that are blocked while in pre-launch (under construction)
 const preLaunchBlocked = ["/quote", "/shipping", "/dashboard", "/login", "/register"];
-
 export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
