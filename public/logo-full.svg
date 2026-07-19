@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <defs>
+    <linearGradient id="pp-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B00"/>
+      <stop offset="100%" stop-color="#FF4500"/>
+    </linearGradient>
+    <filter id="pp-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Logo mark: Rounded square with stylized P + pass arrow -->
+  <g transform="translate(10, 10)">
+    <!-- Rounded square background -->
+    <rect x="0" y="0" width="100" height="100" rx="24" fill="url(#pp-grad)" filter="url(#pp-glow)"/>
+
+    <!-- Stylized P formed by negative space -->
+    <path d="
+      M 30 25
+      L 30 75
+      L 42 75
+      L 42 57
+      L 58 57
+      C 70 57 76 49 76 41
+      C 76 33 70 25 58 25
+      L 30 25
+      Z
+      M 42 37
+      L 56 37
+      C 60 37 63 39 63 41
+      C 63 43 60 45 56 45
+      L 42 45
+      L 42 37
+      Z
+    " fill="#0A0A0A"/>
+
+    <!-- Arrow notch (pass concept) cut into bottom of P stem -->
+    <path d="M 42 65 L 48 72 L 42 79 L 42 75 L 42 65 Z" fill="url(#pp-grad)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(130, 0)">
+    <text x="0" y="52" font-family="Inter, -apple-system, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF" letter-spacing="-1.5">
+      Pawn<tspan fill="#FF6B00">Pass</tspan>
+    </text>
+    <text x="2" y="74" font-family="Inter, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" fill="#888888" letter-spacing="3">
+      DIGITAL PAWNBROKER
+    </text>
+  </g>
+</svg>
