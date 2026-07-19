@@ -72,7 +72,15 @@ export const shipments = pgTable("shipments", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
-// === PAYMENTS ===
+// === LAUNCH SIGNUPS ===
+export const launchSignups = pgTable("launch_signups", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  email: text("email").notNull().unique(),
+  name: text("name"),
+  phone: text("phone"),
+  notifiedAt: timestamp("notified_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
 export const payments = pgTable("payments", {
   id: uuid("id").primaryKey().defaultRandom(),
   loanId: uuid("loan_id").references(() => loans.id),

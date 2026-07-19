@@ -16,25 +16,15 @@ async function decrypt(session: string | undefined = "") {
   }
 }
 
-const protectedRoutes = ["/dashboard", "/shipping"];
-const authRoutes = ["/login", "/register"];
+// Routes that are blocked while in pre-launch (under construction)
+const preLaunchBlocked = ["/quote", "/shipping", "/dashboard", "/login", "/register"];
 
 export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.some(r => path.startsWith(r));
-  const isAuthRoute = authRoutes.includes(path);
 
-  const cookie = req.cookies.get("session")?.value;
-  const session = await decrypt(cookie);
-
-  // Redirect to login if not authenticated on protected routes
-  if (isProtectedRoute && !session?.userId) {
-    return NextResponse.redirect(new URL("/login", req.nextUrl));
-  }
-
-  // Redirect to dashboard if already logged in and visiting login/register
-  if (isAuthRoute && session?.userId) {
-    return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+  // Block app routes during pre-launch — redirect to landing page
+  if (preLaunchBlocked.some(r => path.startsWith(r))) {
+    return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 
   return NextResponse.next();
