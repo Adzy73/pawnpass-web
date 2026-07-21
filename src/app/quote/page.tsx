@@ -46,8 +46,55 @@ export default function QuotePage() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [description, setDescription] = useState("");
-  const [photoCount, setPhotoCount] = useState(0);
+  const [photos, setPhotos] = useState<string[]>([]);
   const [quoteData, setQuoteData] = useState<Quote | null>(null);
+
+  async function compressImage(file: File, maxWidth = 800, quality = 0.7): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          let { width, height } = img;
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) return reject(new Error("Canvas not supported"));
+          ctx.drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL("image/jpeg", quality));
+        };
+        img.onerror = reject;
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function handlePhotoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files || []);
+    const remaining = 4 - photos.length;
+    const toProcess = files.slice(0, remaining);
+    for (const file of toProcess) {
+      if (!file.type.startsWith("image/")) continue;
+      try {
+        const compressed = await compressImage(file);
+        setPhotos((prev) => [...prev, compressed]);
+      } catch (err) {
+        console.error("Photo compression failed:", err);
+      }
+    }
+    e.target.value = "";
+  }
+
+  function removePhoto(index: number) {
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
+  }
 
   async function getQuote() {
     setStep("loading");
@@ -61,14 +108,14 @@ export default function QuotePage() {
           brand,
           model,
           description,
-          photos: photoCount,
+          photos: photos,
         }),
       });
       const data = await res.json();
       const quoteResult: QuoteResult = {
         ...data,
         description,
-        photo_count: photoCount,
+        photo_count: photos.length,
         created_at: new Date().toISOString(),
       };
       setQuote(quoteResult);
@@ -187,22 +234,24 @@ export default function QuotePage() {
 
             {/* Photos */}
             <div className="mb-8">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Photos ({photoCount}/4)</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Photos ({photos.length}/4)</label>
               <p className="text-xs text-gray-500 mb-3">Upload up to 4 photos. Good lighting and clear shots get better quotes.</p>
               <div className="grid grid-cols-4 gap-3">
-                {[0, 1, 2, 3].map((i) => (
-                  <button
-                    key={i}
-                    onClick={() => photoCount < 4 && setPhotoCount(photoCount + 1)}
-                    className={`aspect-square rounded-xl border-2 border-dashed flex items-center justify-center transition-all ${photoCount > i ? "border-orange-500 bg-orange-50" : "border-gray-300 bg-white hover:border-gray-400"}`}
-                  >
-                    {photoCount > i ? (
-                      <span className="text-2xl">✓</span>
-                    ) : (
-                      <span className="text-3xl text-gray-300">+</span>
-                    )}
-                  </button>
+                {photos.map((photo, i) => (
+                  <div key={i} className="aspect-square rounded-xl border-2 border-orange-500 bg-orange-50 overflow-hidden relative">
+                    <img src={photo} alt={`Photo ${i + 1}`} className="w-full h-full object-cover" />
+                    <button
+                      onClick={() => removePhoto(i)}
+                      className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white text-xs flex items-center justify-center"
+                    >✕</button>
+                  </div>
                 ))}
+                {photos.length < 4 && (
+                  <label className="aspect-square rounded-xl border-2 border-dashed border-gray-300 bg-white hover:border-gray-400 flex items-center justify-center cursor-pointer transition-all">
+                    <span className="text-3xl text-gray-300">+</span>
+                    <input type="file" accept="image/*" multiple className="hidden" onChange={handlePhotoUpload} />
+                  </label>
+                )}
               </div>
             </div>
 

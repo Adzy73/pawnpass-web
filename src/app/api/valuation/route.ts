@@ -4,12 +4,14 @@ import { getSessionUserId } from "@/lib/session";
 import { checkRateLimit, getClientIp } from "@/lib/ratelimit";
 
 // PawnPass AI Valuation Engine
-// Primary: Perplexity Sonar API (web-grounded AI with citations)
-// Fallback: Tavily Search API (raw web search)
-// Mock: Falls back to mock data if no API keys configured
+// 1. Vision model (OpenRouter) analyses photos → brand, model, condition
+// 2. Perplexity Sonar API → web-grounded resale value
+// 3. Tavily Search API fallback
+// 4. Mock data fallback
 
 const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY || "";
 const TAVILY_API_KEY = process.env.TAVILY_API_KEY || "";
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
 
 const CATEGORY_BASE_VALUES: Record<string, { min: number; max: number; loanLTV: number; buyLTV: number }> = {
   "jewellery-gold": { min: 100, max: 5000, loanLTV: 0.35, buyLTV: 0.25 },
@@ -71,11 +73,60 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { category, condition, brand, model, description, photos } = body;
+    const { category, condition, description } = body;
+    let brand: string = body.brand || "";
+    let model: string = body.model || "";
+    const photos: string[] = Array.isArray(body.photos) ? body.photos : [];
 
     const cat = CATEGORY_BASE_VALUES[category] || CATEGORY_BASE_VALUES["other"];
     const conditionMult = CONDITION_MULTIPLIERS[condition] || 0.70;
     const isGold = category === "jewellery-gold";
+
+    // === VISION ANALYSIS: Analyse photos with OpenRouter vision model ===
+    let visionAnalysis: { brand: string; model: string; condition: string; notes: string } | null = null;
+    const hasPhotos = Array.isArray(photos) && photos.length > 0 && typeof photos[0] === "string" && photos[0].startsWith("data:");
+
+    if (hasPhotos && OPENROUTER_API_KEY) {
+      try {
+        const visionContent: any[] = [
+          { type: "text", text: `You are a pawnbroking expert. Analyse this item photo for a ${category} valuation. Identify the brand, model, visible condition, and any notable features. Respond ONLY with a JSON object:\n{"brand":"<brand or empty>","model":"<model or empty>","condition":"<new|excellent|good|fair|poor>","notes":"<brief observations>"}` },
+        ];
+        for (const photo of (photos as string[]).slice(0, 4)) {
+          visionContent.push({ type: "image_url", image_url: { url: photo } });
+        }
+
+        const visionRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "google/gemini-3.5-flash",
+            messages: [{ role: "user", content: visionContent }],
+            max_tokens: 300,
+            temperature: 0.2,
+          }),
+        });
+
+        if (visionRes.ok) {
+          const vData = await visionRes.json();
+          let vContent = vData.choices?.[0]?.message?.content?.trim() || "";
+          if (vContent.startsWith("```")) {
+            vContent = vContent.replace(/^```(?:json)?\n?/, "").replace(/```$/, "").trim();
+          }
+          visionAnalysis = JSON.parse(vContent);
+
+          // Enrich user-provided fields with vision data
+          if (visionAnalysis) {
+            if (visionAnalysis.brand && !brand) brand = visionAnalysis.brand;
+            if (visionAnalysis.model && !model) model = visionAnalysis.model;
+          }
+        }
+      } catch (e) {
+        console.error("Vision analysis failed:", e);
+      }
+    }
 
     // === LIVE GOLD PRICE CHECK FOR GOLD/JEWELLERY ITEMS ===
     // For gold items, we calculate the scrap/melt value directly from live spot prices
@@ -289,7 +340,7 @@ export async function POST(request: NextRequest) {
         userId,
         category, condition, brand, model,
         description: description || null,
-        photoCount: photos || 0,
+        photoCount: photos.length,
         estimatedValue: result.estimated_value,
         loanAmount: result.loan_amount,
         buyAmount: result.buy_amount,
