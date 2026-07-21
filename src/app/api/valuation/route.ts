@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, schema } from "@/lib/db";
 import { getSessionUserId } from "@/lib/session";
+import { checkRateLimit, getClientIp } from "@/lib/ratelimit";
 
 // PawnPass AI Valuation Engine
 // Primary: Perplexity Sonar API (web-grounded AI with citations)
@@ -47,6 +48,28 @@ function getRateForAmount(amount: number, isGold: boolean): { rate: string; gold
 
 export async function POST(request: NextRequest) {
   try {
+    // === RATE LIMITING ===
+    const ip = getClientIp(request);
+    const rateLimit = checkRateLimit(ip);
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: "Rate limit exceeded",
+          message: "Too many quote requests. Please try again later.",
+          reset_at: new Date(rateLimit.resetAt).toISOString(),
+        },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": "10",
+            "X-RateLimit-Remaining": "0",
+            "X-RateLimit-Reset": rateLimit.resetAt.toString(),
+            "Retry-After": Math.ceil((rateLimit.resetAt - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const body = await request.json();
     const { category, condition, brand, model, description, photos } = body;
 

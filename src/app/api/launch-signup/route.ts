@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, schema } from "@/lib/db";
-import { eq } from "drizzle-orm";
+import { eq, count } from "drizzle-orm";
+import { sendWelcomeEmail, sendAdminAlert } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,9 +32,18 @@ export async function POST(request: NextRequest) {
       phone: phone || null,
     });
 
+    // Get total signup count
+    const [{ total }] = await db.select({ total: count() }).from(schema.launchSignups);
+
+    // Send emails (non-blocking — don't fail the signup if email fails)
+    Promise.allSettled([
+      sendWelcomeEmail(email, name || null),
+      sendAdminAlert(email, name || null, total),
+    ]);
+
     return NextResponse.json({
       success: true,
-      message: "You're on the list! We'll notify you the moment PawnPass goes live.",
+      message: "You're on the list! Check your inbox for a confirmation. We'll notify you the moment PawnPass goes live.",
     });
   } catch (error) {
     return NextResponse.json(

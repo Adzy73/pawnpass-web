@@ -16,14 +16,38 @@ async function decrypt(session: string | undefined = "") {
   }
 }
 
-// Routes that are blocked while in pre-launch (under construction)
+const IS_LAUNCHED = process.env.LAUNCHED === "true";
+
+// Routes blocked during pre-launch
 const preLaunchBlocked = ["/quote", "/shipping", "/dashboard", "/login", "/register"];
+
+// Protected routes (require auth) — only enforced when launched
+const protectedRoutes = ["/dashboard", "/shipping"];
+const authRoutes = ["/login", "/register"];
+
 export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
-  // Block app routes during pre-launch — redirect to landing page
-  if (preLaunchBlocked.some(r => path.startsWith(r))) {
+  // Pre-launch: block all app routes
+  if (!IS_LAUNCHED && preLaunchBlocked.some(r => path.startsWith(r))) {
     return NextResponse.redirect(new URL("/", req.nextUrl));
+  }
+
+  // When launched: protect routes requiring auth
+  if (IS_LAUNCHED) {
+    const cookie = req.cookies.get("session")?.value;
+    const session = await decrypt(cookie);
+
+    const isProtected = protectedRoutes.some(r => path.startsWith(r));
+    const isAuthRoute = authRoutes.includes(path);
+
+    if (isProtected && !session?.userId) {
+      return NextResponse.redirect(new URL("/login", req.nextUrl));
+    }
+
+    if (isAuthRoute && session?.userId) {
+      return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+    }
   }
 
   return NextResponse.next();

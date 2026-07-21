@@ -1,8 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import PhoneShowcase from "@/components/PhoneShowcase";
+import HowItWorks from "@/components/HowItWorks";
+import PrivacyPromise from "@/components/PrivacyPromise";
+import LockerSection from "@/components/LockerSection";
+import RateCard from "@/components/RateCard";
+import TrustSection from "@/components/TrustSection";
+import Footer from "@/components/Footer";
 
-export default function Home() {
+const IS_LAUNCHED = process.env.NEXT_PUBLIC_LAUNCHED === "true";
+
+// ─── PRE-LAUNCH: Under construction with email signup ───
+function PreLaunchPage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -36,20 +48,16 @@ export default function Home() {
 
   return (
     <main className="flex-1 relative overflow-hidden" style={{ background: "#0A0A0A" }}>
-      {/* Ambient glow */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full" style={{ background: "radial-gradient(ellipse, rgba(255,107,0,0.12) 0%, transparent 65%)" }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full" style={{ background: "radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%)" }} />
       </div>
-
-      {/* Grid overlay */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
         backgroundSize: "50px 50px",
       }} />
 
       <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16">
-        {/* Logo */}
         <div className="flex items-center gap-3 mb-12">
           <img src="/logo-icon-v3.svg" alt="PawnPass" className="w-12 h-12" />
           <div className="flex flex-col">
@@ -58,13 +66,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-8" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.25)" }}>
           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#FF6B00" }}></span>
           <span className="text-[11px] font-medium tracking-wide text-gray-400">COMING SOON</span>
         </div>
 
-        {/* Headline */}
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5 text-white text-center max-w-3xl">
           Australia's first<br />
           <span style={{ color: "#FF6B00" }}>digital pawnbroker.</span>
@@ -75,7 +81,6 @@ export default function Home() {
           Snap, quote, drop at a locker. Cash in minutes.
         </p>
 
-        {/* Signup form */}
         {status === "success" ? (
           <div className="max-w-md w-full rounded-2xl p-8 text-center" style={{ background: "rgba(0,168,126,0.06)", border: "1px solid rgba(0,168,126,0.2)" }}>
             <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "#00A87E" }}>
@@ -85,10 +90,7 @@ export default function Home() {
             </div>
             <h2 className="text-xl font-bold text-white mb-2">You're on the list!</h2>
             <p className="text-sm text-gray-400">{message}</p>
-            <button
-              onClick={() => setStatus("idle")}
-              className="mt-6 text-sm text-gray-500 hover:text-white transition-colors"
-            >
+            <button onClick={() => setStatus("idle")} className="mt-6 text-sm text-gray-500 hover:text-white transition-colors">
               ← Add another email
             </button>
           </div>
@@ -125,7 +127,6 @@ export default function Home() {
           </form>
         )}
 
-        {/* Feature highlights */}
         <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl">
           <div className="text-center">
             <div className="text-3xl mb-2">📸</div>
@@ -141,11 +142,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="mt-16 text-center">
-          <p className="text-xs text-gray-700">
-            © 2026 Pawn Pass · ACL: Theorify · AUSTRAC registered
-          </p>
+          <p className="text-xs text-gray-700">© 2026 Pawn Pass · ACL: Theorify · AUSTRAC registered</p>
           <div className="flex gap-4 justify-center mt-3">
             <a href="/privacy" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Privacy</a>
             <a href="/terms" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Terms</a>
@@ -155,4 +153,26 @@ export default function Home() {
       </div>
     </main>
   );
+}
+
+// ─── LAUNCHED: Full landing page ───
+function FullLandingPage() {
+  return (
+    <main className="flex-1">
+      <Navbar />
+      <Hero />
+      <PhoneShowcase />
+      <PrivacyPromise />
+      <HowItWorks />
+      <LockerSection />
+      <RateCard />
+      <TrustSection />
+      <Footer />
+    </main>
+  );
+}
+
+// ─── Export: conditionally render based on LAUNCHED flag ───
+export default function Home() {
+  return IS_LAUNCHED ? <FullLandingPage /> : <PreLaunchPage />;
 }
