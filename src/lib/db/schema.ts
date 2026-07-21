@@ -8,6 +8,11 @@ export const users = pgTable("users", {
   phone: text("phone"),
   passwordHash: text("password_hash").notNull(),
   role: text("role").notNull().default("customer"), // customer | admin
+  // KYC / Identity verification
+  kycStatus: text("kyc_status").notNull().default("unverified"), // unverified | pending | verified | failed
+  kycReference: text("kyc_reference"), // Stripe Identity verification session ID
+  kycVerifiedAt: timestamp("kyc_verified_at", { withTimezone: true }),
+  kycDetails: text("kyc_details"), // JSON: name, DOB, address from verification
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });

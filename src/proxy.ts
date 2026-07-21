@@ -19,7 +19,7 @@ async function decrypt(session: string | undefined = "") {
 const IS_LAUNCHED = process.env.LAUNCHED === "true";
 
 // Routes blocked during pre-launch
-const preLaunchBlocked = ["/quote", "/shipping", "/dashboard", "/login", "/register"];
+const preLaunchBlocked = ["/quote", "/shipping", "/dashboard", "/login", "/register", "/verify"];
 
 // Protected routes (require auth) — only enforced when launched
 const protectedRoutes = ["/dashboard", "/shipping"];
