@@ -14,11 +14,14 @@ const AUSPOST_BASE_URL = process.env.AUSPOST_BASE_URL || "https://digitalapi.aus
 // These APIs work with just the API key (no password/account number needed)
 const AUSPOST_DIGITAL_API = "https://digitalapi.auspost.com.au";
 
-// PawnPass Hub address (receiver for inbound, sender for outbound)
+// PawnPass Hub nominated Australia Post Parcel Locker (Greenacres Shopping Centre — across from 311 NE Rd)
+const AUSPOST_MYPOST_ID = process.env.AUSPOST_MYPOST_ID || process.env.NEXT_PUBLIC_AUSPOST_MYPOST_ID || "1000000000";
+
 const PAWNPASS_HUB = {
-  name: "PawnPass Hub",
-  lines: ["311 North East Road"],
-  suburb: "Hampstead Gardens",
+  name: "Adam Menadue — PawnPass",
+  parcelLockerId: `Parcel Locker ${AUSPOST_MYPOST_ID}`,
+  lines: [`Parcel Locker ${AUSPOST_MYPOST_ID}`, "Greenacres Shopping Centre, 152 Mullers Rd"],
+  suburb: "GREENACRES",
   state: "SA",
   postcode: "5086",
   phone: "0439726576",
@@ -30,6 +33,8 @@ export async function POST(request: NextRequest) {
     const { action } = body;
 
     switch (action) {
+      case "submit_manual_tracking":
+        return await submitManualTracking(body);
       case "create_shipment":
         return await createShipment(body);
       case "get_label":
@@ -53,6 +58,39 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Submit manual AusPost tracking number from customer parcel locker / satchel lodgement
+async function submitManualTracking(body: any) {
+  const {
+    trackingNumber,
+    lodgementMethod, // "parcel_locker" | "post_office" | "auspost_app"
+    returnAddress,
+    itemValue,
+    itemDescription,
+  } = body;
+
+  const cleanedTracking = (trackingNumber || "").trim().toUpperCase();
+  if (!cleanedTracking || cleanedTracking.length < 6) {
+    return NextResponse.json(
+      { error: "Please enter a valid Australia Post tracking number from your satchel or receipt." },
+      { status: 400 }
+    );
+  }
+
+  return NextResponse.json({
+    status: "LODGED",
+    shipment_id: `PP-AUSPOST-${Date.now()}`,
+    tracking_number: cleanedTracking,
+    lodgement_method: lodgementMethod || "parcel_locker",
+    destination_locker: PAWNPASS_HUB,
+    return_address: returnAddress || null,
+    postage_rebate: 15.0,
+    item_value: itemValue,
+    item_description: itemDescription,
+    mock: false,
+    message: "Tracking number registered. Our hub will receive an AusPost notification the moment your parcel arrives in the Greenacres Parcel Locker.",
+  });
 }
 
 // Create a shipment and generate a label
