@@ -19,8 +19,8 @@ const AUSPOST_MYPOST_ID = process.env.AUSPOST_MYPOST_ID || process.env.NEXT_PUBL
 
 const PAWNPASS_HUB = {
   name: "Adam Menadue — PawnPass",
-  parcelLockerId: `Parcel Locker ${AUSPOST_MYPOST_ID}`,
-  lines: [`Parcel Locker ${AUSPOST_MYPOST_ID}`, "Greenacres Shopping Centre, 152 Mullers Rd"],
+  parcelLockerId: "Parcel Locker 51",
+  lines: ["Parcel Locker 51", `APCN ${AUSPOST_MYPOST_ID} · Greenacres Shopping Centre, 152 Mullers Rd`],
   suburb: "GREENACRES",
   state: "SA",
   postcode: "5086",

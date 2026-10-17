@@ -9,7 +9,8 @@ const MYPOST_ID = process.env.NEXT_PUBLIC_AUSPOST_MYPOST_ID || "1000146016";
 
 const HUB_LOCKER = {
   recipient: "Adam Menadue — PawnPass",
-  lockerLine: `Parcel Locker ${MYPOST_ID}`,
+  lockerLine: "Parcel Locker 51",
+  apcnLine: `1000146016 (MyPost / APCN No.)`,
   locationLine: "Greenacres Shopping Centre, 152 Mullers Rd",
   suburbStatePostcode: "GREENACRES SA 5086",
 };
@@ -435,8 +436,9 @@ export default function ShippingPage() {
               <div className="pl-0 sm:pl-11 space-y-2.5">
                 {[
                   { key: "recipient", label: "RECIPIENT / TO", value: HUB_LOCKER.recipient },
-                  { key: "locker", label: "ADDRESS LINE 1 (10-DIGIT LOCKER ID)", value: HUB_LOCKER.lockerLine, highlight: true },
-                  { key: "loc", label: "ADDRESS LINE 2 (LOCKER LOCATION)", value: HUB_LOCKER.locationLine },
+                  { key: "locker", label: "ADDRESS LINE 1", value: HUB_LOCKER.lockerLine, highlight: true },
+                  { key: "apcn", label: "MYPOST CUSTOMER / APCN NO.", value: HUB_LOCKER.apcnLine, highlight: true },
+                  { key: "loc", label: "ADDRESS LINE 2 (LOCATION)", value: HUB_LOCKER.locationLine },
                   { key: "suburb", label: "SUBURB / STATE / POSTCODE", value: HUB_LOCKER.suburbStatePostcode },
                 ].map((row) => (
                   <div
