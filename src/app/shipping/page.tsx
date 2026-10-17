@@ -8,7 +8,7 @@ import LogoHeader from "@/components/LogoHeader";
 const MYPOST_ID = process.env.NEXT_PUBLIC_AUSPOST_MYPOST_ID || "1000146016";
 
 const HUB_LOCKER = {
-  recipient: "Adam Menadue — PawnPass",
+  recipient: "PawnPass",
   lockerLine: "Parcel Locker 51",
   apcnLine: `1000146016 (MyPost / APCN No.)`,
   locationLine: "Greenacres Shopping Centre, 152 Mullers Rd",

@@ -18,7 +18,7 @@ const AUSPOST_DIGITAL_API = "https://digitalapi.auspost.com.au";
 const AUSPOST_MYPOST_ID = process.env.AUSPOST_MYPOST_ID || process.env.NEXT_PUBLIC_AUSPOST_MYPOST_ID || "1000000000";
 
 const PAWNPASS_HUB = {
-  name: "Adam Menadue — PawnPass",
+  name: "PawnPass",
   parcelLockerId: "Parcel Locker 51",
   lines: ["Parcel Locker 51", `APCN ${AUSPOST_MYPOST_ID} · Greenacres Shopping Centre, 152 Mullers Rd`],
   suburb: "GREENACRES",
