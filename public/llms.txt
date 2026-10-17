@@ -1,0 +1,89 @@
+# PawnPass
+
+> Australia's first fully autonomous digital pawnbroker. Pawn loans and buy-outright for personal items — fully online, no store visits. AI-powered valuation, Australia Post Parcel Locker drop-off, instant Osko payment.
+
+## About
+
+PawnPass is a standalone digital pawnbroker. Customers pawn or sell items online, ship via Australia Post Parcel Lockers, and receive instant Osko payments. No store visits, no counter staff, no stigma. Hub at 311 NE Road, Hampstead Gardens, SA.
+
+## How It Works
+
+1. Describe your item with photos at /quote — get an instant AI-powered valuation.
+2. Accept the quote, create an account, and complete online ID verification.
+3. Ship your item free via Australia Post Parcel Locker (24/7 drop-off) or Post Office.
+4. PawnPass hub receives and physically inspects your item.
+5. Instant Osko/NPP payment to your bank account once verified.
+6. Pay monthly interest to extend your loan, or redeem (pay loan + interest) to get your item back.
+
+## Pawn Loan Rates (PER MONTH)
+
+| Loan Amount | Standard Rate | Gold/Gold Jewellery (25% discount) |
+|---|---|---|
+| Under $1,000 | 35%/month | 26.25%/month |
+| $1,000 – $3,000 | 25%/month | 18.75%/month |
+| $3,000 – $5,000 | 20%/month | 15%/month |
+| Over $5,000 | Negotiable | Negotiable |
+
+- No establishment fees
+- No monthly account fees
+- No credit checks
+- No balloon payments
+- Rates are per month (industry standard for pawn loans)
+
+## Accepted Item Categories
+
+- Gold & Jewellery (35% loan LTV, 25% buy LTV)
+- Watches (30% loan LTV, 20% buy LTV)
+- Phones (35% loan LTV, 25% buy LTV)
+- Laptops (30% loan LTV, 20% buy LTV)
+- Tablets (30% loan LTV, 20% buy LTV)
+- Gaming Consoles (35% loan LTV, 25% buy LTV)
+- Tools & Equipment (30% loan LTV, 20% buy LTV)
+- Cameras (30% loan LTV, 20% buy LTV)
+- Other (25% loan LTV, 15% buy LTV)
+
+Items must be shippable via Australia Post (under 16kg, within 35×44×61cm).
+
+## Services
+
+1. **Online Pawn Loans** — Borrow against your item. Pay monthly interest to extend. Redeem anytime.
+2. **Buy Outright** — Sell your item to PawnPass for immediate cash. No loan, no interest.
+
+## Key Business Rules
+
+- No credit checks — loans are secured by the physical item, not credit history
+- No fees — no establishment fees, no monthly fees, no exit fees
+- Monthly interest rates (not annual) — industry standard for pawn loans
+- Gold items receive 25% discount on interest rates
+- If physical inspection differs from online quote, customer can accept adjusted offer or get free return shipping
+- If loan not redeemed within term + grace period, item is forfeited (no credit file impact)
+- Licensed under ACL "Theorify" (Adam Menadue, responsible manager)
+- AUSTRAC registered for AML/CTF compliance
+- SA Second-hand Dealer registration (police notified)
+
+## Location
+
+- Hub: 311 North East Road, Hampstead Gardens, SA 5086
+- Service area: South Australia (launch), national expansion planned
+- Contact: info@pawnpass.com.au, 0439 726 576
+
+## Pages
+
+- Homepage: https://pawnpass.com.au/
+- How It Works: https://pawnpass.com.au/how-it-works
+- Get a Quote: https://pawnpass.com.au/quote
+- Accepted Items: https://pawnpass.com.au/items
+- Pricing & Rates: https://pawnpass.com.au/pricing
+- FAQ: https://pawnpass.com.au/faq
+- Privacy Policy: https://pawnpass.com.au/privacy
+- Terms: https://pawnpass.com.au/terms
+
+## API for Agents
+
+- Knowledge Catalog (JSON): https://pawnpass.com.au/api/catalog
+- OpenAPI Spec: https://pawnpass.com.au/.well-known/openapi.json
+- Agent Card: https://pawnpass.com.au/.well-known/agent.json
+
+## Contact
+
+Apply online at https://pawnpass.com.au/quote or email info@pawnpass.com.au.

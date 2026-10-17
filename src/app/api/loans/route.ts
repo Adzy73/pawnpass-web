@@ -36,6 +36,31 @@ export async function POST(request: NextRequest) {
 async function createLoan(body: any, userId: string) {
   const { customerName, itemDescription, loanAmount, interestRate, isGold, trackingNumber } = body;
 
+  // ── KYC GATE (AUSTRAC Customer Due Diligence) ──────────────────────
+  // A loan cannot be created until the user's identity is verified.
+  const [user] = await db.select().from(schema.users).where(eq(schema.users.id, userId));
+  if (!user) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+  if (user.kycStatus !== "verified") {
+    return NextResponse.json(
+      {
+        error: "Identity verification required before creating a loan",
+        kycStatus: user.kycStatus,
+        redirect: "/verify",
+      },
+      { status: 403 }
+    );
+  }
+
+  // ── Loan creation ──────────────────────────────────────────────────
+  const principal = Number(loanAmount);
+  const rate = parseFloat(interestRate); // percent per month
+  const monthlyInterest = Number(((principal * rate) / 100).toFixed(2));
+  const dueDate = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000); // 90 days
+  // 3-month redemption estimate: principal + 3 months of interest
+  const redemptionAmount = Number((principal + monthlyInterest * 3).toFixed(2));
+
   const [loan] = await db
     .insert(schema.loans)
     .values({
@@ -46,25 +71,58 @@ async function createLoan(body: any, userId: string) {
       interestRate,
       isGold: isGold || false,
       status: "pending_verification",
-      dueDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+      dueDate,
       interestPaidThrough: new Date(),
       totalInterestPaid: "0",
       trackingNumber: trackingNumber || null,
     })
     .returning();
 
+  // ── Digital pledge ticket ──────────────────────────────────────────
+  const pledgeTicket = {
+    type: "PawnPass Digital Pledge Ticket",
+    loanId: loan.loanId,
+    issuedAt: new Date().toISOString(),
+    principalAmount: principal,
+    interestRate: `${rate}% per month`,
+    monthlyInterest,
+    dueDate: dueDate.toISOString(),
+    redemptionAmount,
+    collateral: {
+      description: itemDescription,
+      isGold: Boolean(isGold),
+    },
+    customer: {
+      name: customerName || user.name,
+      email: user.email,
+      phone: user.phone || null,
+    },
+    pawnpass: {
+      name: "PawnPass Pty Ltd",
+      abn: "TBC",
+      jurisdiction: "South Australia",
+      contact: "support@pawnpass.com.au",
+    },
+    terms: [
+      "This pledge is governed by the Pawnbrokers and Second Hand Dealers Act 1996 (SA).",
+      "The redemption period is 90 days from the date of issue.",
+      "Monthly interest may be paid to extend the redemption period.",
+      "This digital pledge ticket is issued under SA pawnbroking regulations.",
+    ],
+    digital: true,
+    status: "pending_verification",
+  };
+
+  // Persist the structured ticket on the loan record
+  await db
+    .update(schema.loans)
+    .set({ pledgeTicketData: pledgeTicket, updatedAt: new Date() })
+    .where(eq(schema.loans.id, loan.id));
+
   return NextResponse.json({
     success: true,
     loan,
-    pledge_ticket: {
-      loan_id: loan.loanId,
-      principal: loan.principal,
-      interest_rate: loan.interestRate,
-      due_date: loan.dueDate,
-      item: itemDescription,
-      status: "pending_verification",
-      digital: true,
-    },
+    pledge_ticket: pledgeTicket,
   });
 }
 

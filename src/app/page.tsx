@@ -48,11 +48,11 @@ function PreLaunchPage() {
 
   return (
     <main className="flex-1 relative overflow-hidden" style={{ background: "#0A0A0A" }}>
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full" style={{ background: "radial-gradient(ellipse, rgba(255,107,0,0.12) 0%, transparent 65%)" }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full" style={{ background: "radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%)" }} />
       </div>
-      <div className="absolute inset-0 opacity-[0.03]" style={{
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
         backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
         backgroundSize: "50px 50px",
       }} />
@@ -62,7 +62,7 @@ function PreLaunchPage() {
           <img src="/logo-icon-v3.svg" alt="PawnPass" className="w-12 h-12" />
           <div className="flex flex-col">
             <span className="text-2xl font-bold tracking-tight text-white leading-none">Pawn<span style={{ color: "#FF6B00" }}>Pass</span></span>
-            <span className="text-[9px] font-medium tracking-[2px] text-gray-600 mt-1">DIGITAL PAWNBROKER</span>
+            <span className="text-[9px] font-medium tracking-[2px] text-gray-400 mt-1">DIGITAL PAWNBROKER</span>
           </div>
         </div>
 
@@ -78,7 +78,7 @@ function PreLaunchPage() {
 
         <p className="text-base md:text-lg text-gray-400 max-w-xl text-center mb-10 leading-relaxed font-light">
           Pawn your items without ever stepping into a store. No judgement. No storefront. No stigma.
-          Snap, quote, drop at a locker. Cash in minutes.
+          Snap, quote, drop at a locker. Cash after verification.
         </p>
 
         {status === "success" ? (
@@ -143,11 +143,11 @@ function PreLaunchPage() {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-xs text-gray-700">© 2026 Pawn Pass · ACL: Theorify · AUSTRAC registered</p>
+          <p className="text-xs text-gray-300">© 2026 Pawn Pass · ACL: Theorify · AUSTRAC registered</p>
           <div className="flex gap-4 justify-center mt-3">
-            <a href="/privacy" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Privacy</a>
-            <a href="/terms" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Terms</a>
-            <a href="mailto:info@pawnpass.com.au" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Contact</a>
+            <a href="/privacy" className="text-xs text-gray-400 hover:text-gray-400 transition-colors">Privacy</a>
+            <a href="/terms" className="text-xs text-gray-400 hover:text-gray-400 transition-colors">Terms</a>
+            <a href="mailto:info@pawnpass.com.au" className="text-xs text-gray-400 hover:text-gray-400 transition-colors">Contact</a>
           </div>
         </div>
       </div>

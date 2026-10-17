@@ -2,7 +2,7 @@ export default function PhoneShowcase() {
   return (
     <section className="relative overflow-hidden py-16 md:py-20" style={{ background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
       {/* Ambient glow */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 60%)" }} />
       </div>
@@ -13,7 +13,7 @@ export default function PhoneShowcase() {
           <div className="flex justify-center md:justify-start">
             <div className="relative" style={{ width: "260px", height: "540px" }}>
               {/* Phone frame */}
-              <div className="absolute inset-0 rounded-[2.5rem] p-2"
+              <div className="absolute inset-0 pointer-events-none rounded-[2.5rem] p-2"
                 style={{ background: "linear-gradient(145deg, #1a1a1a, #0A0A0A)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 0 60px rgba(255,107,0,0.15)" }}>
                 {/* Screen */}
                 <div className="w-full h-full rounded-[2rem] overflow-hidden relative" style={{ background: "#0A0A0A" }}>
@@ -24,8 +24,8 @@ export default function PhoneShowcase() {
                   <div className="pt-10 px-3 pb-3 h-full flex flex-col">
                     {/* Status bar */}
                     <div className="flex justify-between items-center px-2 mb-4">
-                      <span className="text-[8px] text-gray-600 font-mono">9:41</span>
-                      <span className="text-[8px] text-gray-600">●●●</span>
+                      <span className="text-[8px] text-gray-400 font-mono">9:41</span>
+                      <span className="text-[8px] text-gray-400">●●●</span>
                     </div>
 
                     {/* Logo */}
@@ -37,7 +37,7 @@ export default function PhoneShowcase() {
                     {/* Quote card */}
                     <div className="rounded-xl p-3 mb-2" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
                       <p className="text-[8px] text-gray-500 mb-2">YOUR QUOTE</p>
-                      <p className="text-2xl font-bold text-white mb-1">$1,250<span className="text-xs text-gray-600"> loan</span></p>
+                      <p className="text-2xl font-bold text-white mb-1">$1,250<span className="text-xs text-gray-400"> loan</span></p>
                       <p className="text-sm font-semibold mb-3" style={{ color: "#FF6B00" }}>$875 buy outright</p>
                       <div className="flex gap-1 mb-2">
                         <div className="px-1.5 py-0.5 rounded-full text-[7px] font-medium" style={{ background: "rgba(0,168,126,0.1)", color: "#00A87E" }}>GOLD RATE 18.75%</div>
@@ -64,7 +64,7 @@ export default function PhoneShowcase() {
 
                     {/* Privacy badge */}
                     <div className="mt-auto text-center pt-2">
-                      <p className="text-[7px] text-gray-700">🔒 No storefront. No judgement.</p>
+                      <p className="text-[7px] text-gray-300">🔒 No storefront. No judgement.</p>
                     </div>
                   </div>
                 </div>
@@ -101,9 +101,9 @@ export default function PhoneShowcase() {
           {/* Right: Copy */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-[10px] text-gray-700 tracking-widest">FIG.00</span>
+              <span className="font-mono text-[10px] text-gray-300 tracking-widest">FIG.00</span>
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-              <span className="font-mono text-[10px] text-gray-700 tracking-widest">APP_PREVIEW</span>
+              <span className="font-mono text-[10px] text-gray-300 tracking-widest">APP_PREVIEW</span>
             </div>
             <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-4 text-white">
               The whole process,
@@ -112,7 +112,7 @@ export default function PhoneShowcase() {
             </h2>
             <p className="text-sm text-gray-500 mb-6 leading-relaxed font-light">
               No counters. No queues. No paperwork. Just snap your item, accept your quote,
-              and drop it at a parcel locker near you. Money in your bank before you get home.
+              and drop it at a parcel locker near you. Payment sent via Osko after inspection.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function PhoneShowcase() {
                 <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
                   <span className="text-xs">⚡</span>
                 </div>
-                <p className="text-sm text-gray-400">Paid via Osko — money in minutes</p>
+                <p className="text-sm text-gray-400">Paid via Osko after verification</p>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>

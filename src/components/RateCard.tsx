@@ -11,9 +11,9 @@ export default function RateCard() {
       <div className="max-w-4xl mx-auto">
         {/* Blueprint header */}
         <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">FIG.03</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">FIG.03</span>
           <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">RATE_CARD</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">RATE_CARD</span>
         </div>
 
         <div className="text-center mb-12">
@@ -36,9 +36,9 @@ export default function RateCard() {
               }}>
               <p className="font-mono text-xs text-gray-500 mb-3 tracking-wider">{tier.range}</p>
               <p className="text-4xl font-bold mb-1" style={{ color: "#FF6B00" }}>{tier.rate}</p>
-              <p className="font-mono text-[10px] text-gray-600 mb-4">PER_MONTH</p>
+              <p className="font-mono text-[10px] text-gray-400 mb-4">PER_MONTH</p>
               <div className="pt-3 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                <p className="font-mono text-[10px] text-gray-600 mb-1 tracking-wider">GOLD_RATE</p>
+                <p className="font-mono text-[10px] text-gray-400 mb-1 tracking-wider">GOLD_RATE</p>
                 <p className="text-xl font-bold" style={{ color: "#00A87E" }}>{tier.gold}</p>
               </div>
             </div>

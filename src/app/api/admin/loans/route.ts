@@ -3,16 +3,16 @@ import { db, schema } from "@/lib/db";
 import { getSessionUserId } from "@/lib/session";
 import { eq, desc } from "drizzle-orm";
 
-const ADMIN_KEY = process.env.ADMIN_KEY || "pawnpass-admin-2026";
-
-function isAdmin(request: NextRequest): boolean {
-  return request.headers.get("x-admin-key") === ADMIN_KEY;
-}
-
-// GET: list all loans with payment info for admin
+// GET: list all loans with full details for admin dashboard
 export async function GET(request: NextRequest) {
-  if (!isAdmin(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const userId = await getSessionUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
+
+  const [user] = await db.select().from(schema.users).where(eq(schema.users.id, userId));
+  if (!user || (user.role !== "admin" && user.role !== "inspector")) {
+    return NextResponse.json({ error: "Not authorised" }, { status: 403 });
   }
 
   const allLoans = await db.select().from(schema.loans).orderBy(desc(schema.loans.createdAt));
@@ -27,16 +27,46 @@ export async function GET(request: NextRequest) {
       isGold: l.isGold,
       status: l.status,
       totalInterestPaid: l.totalInterestPaid,
+      interestPaidThrough: l.interestPaidThrough,
       dueDate: l.dueDate,
+      redeemedAt: l.redeemedAt,
       createdAt: l.createdAt,
       trackingNumber: l.trackingNumber,
+      notes: Array.isArray(l.notes) ? l.notes : [],
+      counterOfferAmount: l.counterOfferAmount,
+      counterOfferReason: l.counterOfferReason,
+      counterOfferStatus: l.counterOfferStatus,
+      counterOfferExpiresAt: l.counterOfferExpiresAt,
+      payoutStatus: l.payoutStatus,
     })),
   });
 }
 
 // POST: admin actions — approve loan, mark payment received, approve KYC
+// Uses x-admin-key header for backwards compat (also accepts session auth)
+const ADMIN_KEY = process.env.ADMIN_KEY || "pawnpass-admin-2026";
+
 export async function POST(request: NextRequest) {
-  if (!isAdmin(request)) {
+  // Accept either session-based auth or admin key header
+  let isAuthorized = false;
+  let adminUserId: string | null = null;
+
+  // Check session-based auth
+  const sessionUserId = await getSessionUserId();
+  if (sessionUserId) {
+    const [user] = await db.select().from(schema.users).where(eq(schema.users.id, sessionUserId));
+    if (user && (user.role === "admin" || user.role === "inspector")) {
+      isAuthorized = true;
+      adminUserId = sessionUserId;
+    }
+  }
+
+  // Fallback: admin key header
+  if (!isAuthorized && request.headers.get("x-admin-key") === ADMIN_KEY) {
+    isAuthorized = true;
+  }
+
+  if (!isAuthorized) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

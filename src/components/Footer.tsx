@@ -19,17 +19,18 @@ export default function Footer() {
             <h4 className="text-sm font-semibold mb-4">Get started</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><a href="/quote" className="hover:text-white transition-colors">Get a quote</a></li>
-              <li><a href="#how" className="hover:text-white transition-colors">How it works</a></li>
-              <li><a href="#rates" className="hover:text-white transition-colors">Rates</a></li>
-              <li><a href="/login" className="hover:text-white transition-colors">Sign in</a></li>
+              <li><a href="/how-it-works" className="hover:text-white transition-colors">How it works</a></li>
+              <li><a href="/pricing" className="hover:text-white transition-colors">Rates</a></li>
+              <li><a href="/items" className="hover:text-white transition-colors">Accepted items</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#trust" className="hover:text-white transition-colors">Why us</a></li>
-              <li><a href="#lockers" className="hover:text-white transition-colors">Lockers</a></li>
+              <li><a href="/faq" className="hover:text-white transition-colors">FAQ</a></li>
+              <li><a href="/login" className="hover:text-white transition-colors">Sign in</a></li>
+              <li><a href="/admin" className="hover:text-white transition-colors" style={{ color: "#FF6B00" }}>Admin Dashboard</a></li>
               <li><a href="mailto:info@pawnpass.com.au" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -37,8 +38,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>info@pawnpass.com.au</li>
-              <li>0439 726 576</li>
+              <li><a href="mailto:info@pawnpass.com.au" className="hover:text-white transition-colors">info@pawnpass.com.au</a></li>
               <li>311 NE Road, Hampstead Gardens SA</li>
             </ul>
           </div>

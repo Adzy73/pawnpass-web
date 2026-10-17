@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, schema } from "@/lib/db";
 import { eq, count } from "drizzle-orm";
-import { sendWelcomeEmail, sendAdminAlert } from "@/lib/email";
+import { sendCustomerWelcome, sendAdminAlertEmail, IS_AGENTMAIL_CONFIGURED } from "@/lib/agentmail";
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,10 +35,10 @@ export async function POST(request: NextRequest) {
     // Get total signup count
     const [{ total }] = await db.select({ total: count() }).from(schema.launchSignups);
 
-    // Send emails (non-blocking — don't fail the signup if email fails)
+    // Send emails via AgentMail (non-blocking)
     Promise.allSettled([
-      sendWelcomeEmail(email, name || null),
-      sendAdminAlert(email, name || null, total),
+      sendCustomerWelcome(email, name || null),
+      sendAdminAlertEmail(email, name || null, total),
     ]);
 
     return NextResponse.json({

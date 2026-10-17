@@ -3,8 +3,8 @@ export default function TrustSection() {
     { title: "No storefront, ever", desc: "Your entire transaction happens from your phone. No walking into a shop. No being seen. No stigma.", icon: "📱" },
     { title: "AI valuation", desc: "Analyses your photos against thousands of market sales. Fair, instant, no haggling, no human judgement.", icon: "🤖" },
     { title: "Discreet collection", desc: "Items move via unbranded Australia Post Parcel Lockers. No PawnPass vehicles. No logos. No telltale packaging.", icon: "📦" },
-    { title: "Banking-grade security", desc: "Your data is encrypted end-to-end. ID verified via Stripe. We never sell your information.", icon: "🔒" },
-    { title: "Osko in minutes", desc: "Verified at our hub, money sent to your bank instantly. No waiting days for a transfer.", icon: "⚡" },
+    { title: "Secure & encrypted", desc: "Your data is encrypted. ID verified via Stripe Identity. We never sell your personal information.", icon: "🔒" },
+    { title: "Fast Osko payment", desc: "Verified at our hub, then payment sent via Osko. No waiting days for a transfer.", icon: "⚡" },
     { title: "No credit check", desc: "Secured against your item, not your credit file. Walk away anytime, no default.", icon: "✅" },
   ];
 
@@ -13,9 +13,9 @@ export default function TrustSection() {
       <div className="max-w-5xl mx-auto">
         {/* Blueprint header */}
         <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">FIG.04</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">FIG.04</span>
           <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">FEATURES</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">FEATURES</span>
         </div>
 
         <div className="text-center mb-16">

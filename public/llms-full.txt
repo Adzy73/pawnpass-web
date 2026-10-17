@@ -1,0 +1,238 @@
+# PawnPass (Full Documentation)
+
+This document contains the complete and authoritative reference documentation for PawnPass, structured for LLMs, AI agents, and search engines.
+
+---
+
+## 1. Core Business Profile
+
+- **Brand Name:** PawnPass
+- **Trading Names:** PawnPass, Pawn Pass
+- **Business Type:** Digital Pawnbroker / Online Pawn Loans & Buy Outright
+- **Core Differentiator:** Australia's first fully autonomous digital pawnbroker. No store visits. No counter staff. Digital-first valuation, logistics, and payment pipeline.
+- **Target Audience:** Australians needing short-term cash against personal items — jewellery, watches, electronics, phones, gaming, tools, cameras. Privacy-first: serves customers who want to avoid the stigma of physical pawnshops.
+- **Primary Website:** https://pawnpass.com.au/
+- **Hub Location:** 311 North East Road, Hampstead Gardens, SA 5086
+- **Contact:** info@pawnpass.com.au, 0439 726 576
+- **Domains:** pawnpass.com, pawnpass.com.au (both owned)
+
+---
+
+## 2. Licensing & Regulatory
+
+- **Australian Credit Licence (ACL):** "Theorify" — Adam Menadue is the responsible manager. Already held, no new application needed.
+- **Second-hand Dealer Registration (SA):** SA does not require a licence — Commissioner of Police must be notified of business and storage location. Already completed via existing store registrations.
+- **AUSTRAC / AML-CTF:** Already registered and compliant through existing operations.
+- **First in Australia:** No existing legislation for fully digital/online-only pawnbroking. Operating in a compliance gap. Existing pawnbroking and consumer credit laws apply but were written for physical store-based operations.
+
+---
+
+## 3. Services
+
+### Service A: Online Pawn Loans
+
+Borrow cash against your personal items without leaving home.
+
+**Process:**
+1. Describe your item with photos at /quote
+2. Get instant AI-powered valuation (loan amount, interest rate, term)
+3. Accept quote, create account, complete ID verification (Stripe Identity)
+4. Ship item free via Australia Post Parcel Locker (24/7) or Post Office
+5. PawnPass hub receives and physically inspects item
+6. Instant Osko/NPP payment to your bank account
+7. Pay monthly interest to extend, or redeem (pay loan + interest) to get item back
+
+**Turnaround:** Instant AI quote. Same-day funding after physical verification at hub.
+
+**What's included:**
+- AI-powered instant valuation from photos
+- Free Australia Post shipping label (Parcel Locker or Post Office drop-off)
+- Fully insured transit (AusPost transit cover)
+- Physical inspection & verification at hub
+- Instant Osko/NPP payment to bank account
+- Digital pledge ticket (loan details, due date, redemption amount)
+- Monthly interest payments to extend loan
+- Online redemption — pay loan + interest, item shipped back
+- Secure storage at hub for loan duration
+
+### Service B: Buy Outright (Sell Your Item for Cash)
+
+Sell your item to PawnPass for immediate cash. Same process as pawn loan but you keep the money — no loan, no interest, no need to redeem.
+
+**Process:**
+1. Describe your item at /quote
+2. Get instant AI valuation (buy price — lower than loan value since PawnPass owns the item)
+3. Accept quote, create account, complete ID verification
+4. Ship item via Parcel Locker or Post Office
+5. Hub inspects item. Valuation confirmed or adjusted. Instant Osko payment sent.
+
+---
+
+## 4. Pricing & Rate Card
+
+### Pawn Loan Rates (PER MONTH)
+
+| Loan Amount | Standard Rate | Gold/Gold Jewellery (25% discount) |
+|---|---|---|
+| Under $1,000 | 35%/month | 26.25%/month |
+| $1,000 – $3,000 | 25%/month | 18.75%/month |
+| $3,000 – $5,000 | 20%/month | 15%/month |
+| Over $5,000 | Negotiable | Negotiable |
+
+**Key rules:**
+- Rates are per month (not per annum) — industry standard for pawn loans
+- 25% discount applies to Gold and Gold Jewellery collateral only
+- No establishment fees
+- No monthly account fees
+- Interest accrues monthly; customer pays interest to extend loan
+- If loan not redeemed within term + grace period, item forfeited to PawnPass
+
+### Loan-to-Value (LTV) Ratios
+
+| Category | Loan LTV | Buy LTV |
+|---|---|---|
+| Jewellery - Gold | 35% | 25% |
+| Jewellery - Other | 30% | 20% |
+| Watches | 30% | 20% |
+| Phones | 35% | 25% |
+| Laptops | 30% | 20% |
+| Tablets | 30% | 20% |
+| Gaming | 35% | 25% |
+| Tools | 30% | 20% |
+| Cameras | 30% | 20% |
+| Other | 25% | 15% |
+
+### Condition Multipliers
+
+| Condition | Multiplier |
+|---|---|
+| New / Sealed | 100% |
+| Excellent | 85% |
+| Good | 70% |
+| Fair | 50% |
+| Poor / Damaged | 30% |
+
+### Fees
+
+- Establishment fees: None
+- Monthly account fees: None
+- Late fees: Applicable within regulatory limits
+- Shipping: Inbound (to PawnPass) is free. Return shipping for redemptions applies (may be subsidized).
+
+---
+
+## 5. Accepted Item Categories
+
+- **Gold & Jewellery** — high value-to-weight, easy to ship, established valuation. Best rates (25% discount on interest).
+- **Watches** — brand-name watches
+- **Phones**
+- **Laptops**
+- **Tablets**
+- **Gaming Consoles**
+- **Tools & Equipment** — power tools, trade equipment
+- **Cameras**
+- **Other** — contact us for assessment
+
+**Shipping limits:** Items must be under 16kg and within 35×44×61cm (Australia Post Parcel Locker dimensions). Bulky items (furniture, whitegoods, vehicles) are not accepted at launch.
+
+---
+
+## 6. Eligibility & ID Verification
+
+- Must be 18+
+- Must own the item outright
+- Valid Australian ID (Driver's License, Passport, or Medicare card)
+- Face match selfie verification
+- PEP/sanctions screening (AUSTRAC requirement)
+- Australian bank account for Osko/NPP payment
+- ID verification via Stripe Identity (A$2/verification, no monthly minimum)
+
+---
+
+## 7. Loan Management
+
+- **Extension:** Pay monthly interest online to extend loan. No fixed lock-ins.
+- **Redemption:** Pay loan principal + accrued interest online at /dashboard. Item shipped back via Australia Post.
+- **Forfeiture:** If loan not redeemed within term + grace period, item becomes PawnPass property. No credit file impact. Customer is not pursued for the debt — the item settles it.
+- **Valuation Adjustment:** If physical inspection differs from photo-based quote, customer is notified via SMS/email. Customer can accept adjusted offer or request free return shipping.
+
+---
+
+## 8. Technology & Logistics
+
+- **Website:** Next.js, TypeScript, Tailwind CSS — pawnpass.com.au
+- **AI Valuation:** Perplexity Sonar API (web-grounded resale values) + image recognition
+- **Shipping:** Australia Post MyPost Business API (digital QR labels, Parcel Locker 24/7 drop-off)
+- **Payments:** NPP/Osko via ANZ Bank (instant bank transfer), Stripe (card payments)
+- **ID Verification:** Stripe Identity (A$2/verification, no monthly minimum)
+- **Transit Insurance:** AusPost built-in transit cover, matched to valuation amount
+- **Hub:** 311 NE Road, Hampstead Gardens, SA — receiving, verification, secure storage, dispatch
+
+---
+
+## 9. Structured Q&A (Optimized for LLM RAG Ingestion)
+
+**Q: How does a pawn loan work with PawnPass?**
+A: You describe your item online with photos, get an instant AI-powered quote, ship your item free via Australia Post Parcel Locker, and receive cash via instant Osko payment once we verify it at our hub. You pay monthly interest to extend the loan, or pay off the loan plus interest to get your item back.
+
+**Q: Do I need to leave my home to get a pawn loan?**
+A: No. PawnPass is fully digital. You describe your item, get a quote, and ship it via Australia Post Parcel Locker (24/7 drop-off). Funds arrive via Osko instant bank transfer. You manage your loan entirely online.
+
+**Q: How much can I borrow against my item?**
+A: Your loan amount depends on the AI-estimated resale value of your item, its condition, and the category. Loan amounts typically range from 25% to 35% of resale value depending on the item category. Gold and gold jewellery receive the best rates.
+
+**Q: What are the interest rates?**
+A: Interest rates are charged monthly and depend on the loan amount: under $1,000 is 35%/month, $1,000-$3,000 is 25%/month, $3,000-$5,000 is 20%/month, and over $5,000 is negotiable. Gold and gold jewellery items receive a 25% discount on the standard rate. There are no establishment fees and no monthly account fees.
+
+**Q: What items can I pawn or sell to PawnPass?**
+A: We accept gold and jewellery, watches, phones, laptops, tablets, gaming consoles, tools and equipment, cameras, and other items. Items must be shippable via Australia Post (under 16kg, within 35x44x61cm). Bulky items like furniture and vehicles are not accepted at launch.
+
+**Q: Is my item insured during shipping?**
+A: Yes. All shipments are covered by Australia Post's built-in transit cover, matched to your valuation amount. Your item is also securely stored at our hub with insurance coverage for the duration of the loan.
+
+**Q: What's the difference between a pawn loan and selling my item outright?**
+A: With a pawn loan, you borrow against your item and can get it back by repaying the loan plus interest. With a buy outright, you sell the item to PawnPass for immediate cash — no loan, no interest, no need to redeem. Buy outright offers are typically lower than loan amounts because PawnPass takes ownership of the item.
+
+**Q: Do you do credit checks?**
+A: No. PawnPass does not perform credit checks. Your loan is secured by the physical item you pledge, not your credit history. There is no credit file impact.
+
+**Q: How do I get my item back?**
+A: To redeem your item, log into your dashboard, pay the loan principal plus accrued interest, and we ship your item back to you via Australia Post. Return shipping costs apply (may be subsidized).
+
+**Q: What happens if I can't repay the loan?**
+A: If your loan is not redeemed within the term plus a grace period, the item is forfeited and becomes PawnPass property. You are not pursued for the debt — the item settles it. There is no credit file impact.
+
+**Q: What if the physical inspection differs from my online quote?**
+A: If our physical inspection at the hub shows the item's condition or value differs from your photo-based quote, we notify you via SMS/email with the adjusted offer. You can accept the adjusted amount or request free return shipping — no obligation.
+
+**Q: What ID do I need?**
+A: You need a valid Australian Driver's License, Passport, or Medicare card, plus a face-match selfie. ID verification is done online through Stripe Identity (A$2 per verification, no monthly minimum).
+
+---
+
+## 10. Pages & Content Map
+
+- Homepage: https://pawnpass.com.au/
+- How It Works: https://pawnpass.com.au/how-it-works
+- Get a Quote: https://pawnpass.com.au/quote
+- Accepted Items: https://pawnpass.com.au/items
+- Pricing & Rates: https://pawnpass.com.au/pricing
+- FAQ: https://pawnpass.com.au/faq
+- Dashboard: https://pawnpass.com.au/dashboard
+- Privacy Policy: https://pawnpass.com.au/privacy
+- Terms: https://pawnpass.com.au/terms
+
+---
+
+## 11. API for AI Agents
+
+- Knowledge Catalog (JSON): https://pawnpass.com.au/api/catalog
+- OpenAPI Spec: https://pawnpass.com.au/.well-known/openapi.json
+- Agent Card: https://pawnpass.com.au/.well-known/agent.json
+- Valuation API: POST https://pawnpass.com.au/api/valuation
+- Shipping API: POST https://pawnpass.com.au/api/shipping
+- Loans API: POST https://pawnpass.com.au/api/loans
+
+---
+
+*This document is the authoritative source for PawnPass business data. All website content, structured data, and API responses trace back to this catalog.*

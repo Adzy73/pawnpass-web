@@ -1,0 +1,195 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "PawnPass API",
+    "description": "Public API for PawnPass, Australia's first digital pawnbroker. Provides read-only access to the knowledge catalog (services, pricing, FAQs, item categories) and transactional endpoints for valuation, shipping, and loan management.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "PawnPass",
+      "email": "info@pawnpass.com.au",
+      "url": "https://pawnpass.com.au"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://pawnpass.com.au",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/catalog": {
+      "get": {
+        "summary": "Get knowledge catalog",
+        "description": "Returns the complete PawnPass knowledge catalog as structured JSON. Includes business entity, services, pricing, policies, Q&A bank, accepted item categories, and condition grades.",
+        "tags": ["Knowledge Catalog"],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Knowledge catalog JSON. See schema at /catalog/schema.json."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/valuation": {
+      "post": {
+        "summary": "Get AI-powered item valuation",
+        "description": "Submit item details and photos to receive an instant AI-powered valuation. Returns estimated resale value, loan amount, buy amount, and interest rate. Falls back to mock data if API keys are not configured.",
+        "tags": ["Valuation"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": ["jewellery-gold", "watches", "phones", "laptops", "tablets", "gaming", "tools", "cameras", "other"],
+                    "description": "Item category"
+                  },
+                  "condition": {
+                    "type": "string",
+                    "enum": ["new", "excellent", "good", "fair", "poor"],
+                    "description": "Item condition"
+                  },
+                  "brand": { "type": "string", "description": "Item brand (optional)" },
+                  "model": { "type": "string", "description": "Item model (optional)" },
+                  "description": { "type": "string", "description": "Additional description (optional)" },
+                  "photos": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "Base64-encoded photos (optional)"
+                  }
+                },
+                "required": ["category", "condition"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Valuation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "estimated_value": { "type": "number" },
+                    "loan_amount": { "type": "number" },
+                    "buy_amount": { "type": "number" },
+                    "interest_rate": { "type": "string" },
+                    "is_gold": { "type": "boolean" },
+                    "confidence": { "type": "number" },
+                    "category": { "type": "string" },
+                    "condition": { "type": "string" },
+                    "brand": { "type": "string" },
+                    "model": { "type": "string" },
+                    "mock": { "type": "boolean", "description": "True if using mock data" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "429": { "description": "Rate limit exceeded" },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/api/shipping": {
+      "post": {
+        "summary": "Shipping operations",
+        "description": "Find Parcel Lockers, create shipments, track shipments, or get shipping labels. Requires session authentication.",
+        "tags": ["Shipping"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": ["find_lockers", "create_shipment", "track_shipment", "get_label"]
+                  },
+                  "postcode": { "type": "string", "description": "Required for find_lockers" },
+                  "tracking_number": { "type": "string", "description": "Required for track_shipment" }
+                },
+                "required": ["action"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Successful response" },
+          "401": { "description": "Not authenticated" }
+        }
+      }
+    },
+    "/api/loans": {
+      "post": {
+        "summary": "Loan management",
+        "description": "Create loans, view active loans, pay interest, or redeem loans. Requires session authentication.",
+        "tags": ["Loans"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": ["create_loan", "get_loans", "pay_interest", "redeem_loan"]
+                  }
+                },
+                "required": ["action"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Successful response" },
+          "401": { "description": "Not authenticated" }
+        }
+      }
+    },
+    "/api/gold-price": {
+      "get": {
+        "summary": "Get current gold price",
+        "description": "Returns the current gold spot price from GoldAPI.io. Used for gold item valuations.",
+        "tags": ["Market Data"],
+        "responses": {
+          "200": { "description": "Current gold price" }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "summary": "Health check",
+        "description": "Returns server health status.",
+        "tags": ["System"],
+        "responses": {
+          "200": { "description": "Server is healthy" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "sessionAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "pawnpass_session",
+        "description": "Session cookie for authenticated endpoints (loans, shipping). Public endpoints (catalog, valuation) require no authentication."
+      }
+    }
+  }
+}

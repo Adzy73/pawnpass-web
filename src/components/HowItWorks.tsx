@@ -3,7 +3,7 @@ export default function HowItWorks() {
     { num: "01", title: "Snap & quote", desc: "Take a photo. AI gives you a loan amount and buy price instantly.", icon: "📸" },
     { num: "02", title: "Verify ID", desc: "Driver's licence or passport. Two minutes, fully encrypted.", icon: "🪪" },
     { num: "03", title: "Drop at locker", desc: "Digital QR code to any Parcel Locker. Or book a home pickup.", icon: "📦" },
-    { num: "04", title: "Get paid", desc: "We verify at our hub, then Osko instant transfer to your bank.", icon: "⚡" },
+    { num: "04", title: "Get paid", desc: "We verify at our hub, then Osko payment to your bank.", icon: "⚡" },
     { num: "05", title: "Redeem or relax", desc: "Pay back online, item ships back. Or walk away — no credit impact.", icon: "🔓" },
   ];
 
@@ -12,9 +12,9 @@ export default function HowItWorks() {
       {/* Blueprint header line */}
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">FIG.01</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">FIG.01</span>
           <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">PROCESS</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">PROCESS</span>
         </div>
 
         <div className="text-center mb-16">

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isLiveMode } from "@/lib/production";
 
 // PawnPass Gold Price API
 // Uses GoldAPI.io to fetch live gold spot prices in AUD per gram by karat
@@ -22,7 +23,14 @@ export async function GET(request: NextRequest) {
     }
 
     if (!GOLDAPI_KEY) {
-      // Mock gold price (approximate, July 2026)
+      // In production: fail closed — no fake gold prices
+      if (isLiveMode()) {
+        return NextResponse.json(
+          { error: "Gold price API not configured" },
+          { status: 503 }
+        );
+      }
+      // Mock gold price (approximate, July 2026) — dev/test only
       return NextResponse.json({
         metal: "XAU",
         currency: "AUD",

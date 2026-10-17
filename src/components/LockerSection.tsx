@@ -5,9 +5,9 @@ export default function LockerSection() {
       <div className="max-w-5xl mx-auto">
         {/* Blueprint header */}
         <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">FIG.02</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">FIG.02</span>
           <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">LOCKER_NETWORK</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">LOCKER_NETWORK</span>
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -80,7 +80,7 @@ export default function LockerSection() {
                   ["Hold window", "48 hours"],
                 ].map(([label, value], i) => (
                   <div key={label} className="flex items-center justify-between text-sm">
-                    <span className="font-mono text-gray-600">{label}</span>
+                    <span className="font-mono text-gray-400">{label}</span>
                     <span className="text-gray-200 font-medium">{value}</span>
                   </div>
                 ))}

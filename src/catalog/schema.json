@@ -1,0 +1,117 @@
+{
+  "$id": "https://pawnpass.com.au/catalog-schema.json",
+  "title": "Knowledge Catalog Schema",
+  "description": "Shared schema for business knowledge catalogs. One catalog per business. Drives website content, JSON-LD, APIs, and agent cards.",
+  "type": "object",
+  "required": ["version", "last_updated", "business", "services", "pricing", "policies", "qa_bank"],
+  "properties": {
+    "version": { "type": "string" },
+    "last_updated": { "type": "string", "format": "date" },
+    "business": {
+      "type": "object",
+      "required": ["trading_names", "business_type", "website", "description"],
+      "properties": {
+        "legal_name": { "type": ["string", "null"] },
+        "trading_names": { "type": "array", "items": { "type": "string" } },
+        "business_type": { "type": "string" },
+        "website": { "type": "string" },
+        "description": { "type": "string" },
+        "mission": { "type": "string" },
+        "target_audience": { "type": "string" },
+        "years_in_business": { "type": ["number", "null"] },
+        "abn": { "type": ["string", "null"] },
+        "licenses": { "type": "array" },
+        "insurance": { "type": "object" },
+        "awards": { "type": "array" }
+      }
+    },
+    "locations": { "type": "array" },
+    "service_areas": { "type": "array" },
+    "contact": { "type": "object" },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description", "process_steps"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "what_is_included": { "type": "array", "items": { "type": "string" } },
+          "process_steps": { "type": "array" },
+          "turnaround": { "type": "string" },
+          "service_areas": { "type": "array", "items": { "type": "string" } },
+          "linked_faq_ids": { "type": "array", "items": { "type": "string" } },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "accepted_assets": { "type": "array" },
+    "accepted_item_categories": { "type": "array" },
+    "condition_grades": { "type": "array" },
+    "pricing": {
+      "type": "object",
+      "required": ["currency"],
+      "properties": {
+        "currency": { "type": "string" },
+        "loan_to_value": { "type": "object" },
+        "loan_rates": { "type": "object" },
+        "loan_term": { "type": "object" },
+        "interest_structure": { "type": "object" },
+        "fees": { "type": "object" },
+        "credit_checks": { "type": "object" },
+        "documentation": { "type": "object" },
+        "what_drives_price_up": { "type": "array", "items": { "type": "string" } },
+        "what_drives_price_down": { "type": "array", "items": { "type": "string" } },
+        "transparency_note": { "type": "string" }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "properties": {
+        "application": { "type": "object" },
+        "loan_extension": { "type": "object" },
+        "early_redemption": { "type": "object" },
+        "redemption": { "type": "object" },
+        "forfeiture": { "type": "object" },
+        "valuation_adjustment": { "type": "object" },
+        "collateral_storage": { "type": "object" },
+        "privacy": { "type": "object" },
+        "complaints": { "type": "object" },
+        "terms_url": { "type": "string" },
+        "id_verification": { "type": "object" }
+      }
+    },
+    "credentials": {
+      "type": "object",
+      "properties": {
+        "licenses": { "type": "array", "items": { "type": "string" } },
+        "certifications": { "type": "array" },
+        "team_bios": { "type": "array" },
+        "industry_memberships": { "type": "array" },
+        "media_mentions": { "type": "array" }
+      }
+    },
+    "qa_bank": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "answer", "publishable"],
+        "properties": {
+          "id": { "type": "string" },
+          "question": { "type": "string" },
+          "answer": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "publishable": { "type": "boolean" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "faq_published": { "type": "array", "items": { "type": "string" } },
+    "blog_posts": { "type": "array" },
+    "reviews": { "type": "array" },
+    "testimonials": { "type": "array" },
+    "call_transcripts": { "type": "array" },
+    "gaps_flagged": { "type": "array", "items": { "type": "string" } }
+  }
+}

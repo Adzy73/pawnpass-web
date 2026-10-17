@@ -1,0 +1,53 @@
+{
+  "baseline_date": "2026-07-26",
+  "status": "REQUIRES_MANUAL_EXECUTION",
+  "note": "AI platforms (Perplexity, ChatGPT, Gemini) block automated browser access via Cloudflare. Baseline must be recorded manually by querying each platform with each prompt from tracked-prompts.json and recording the results below.",
+  "methodology": {
+    "steps": [
+      "1. Open each AI platform (ChatGPT, Gemini, Perplexity, Google AI Mode) in a browser",
+      "2. Copy-paste each prompt from tracked-prompts.json",
+      "3. Record whether PawnPass/TradeCashFlow is mentioned",
+      "4. Record what data is cited (our data = share of voice)",
+      "5. Record whether competitors are cited",
+      "6. Fill in the results array below"
+    ],
+    "scoring": {
+      "mentioned": "0 = not mentioned, 1 = mentioned",
+      "share_of_voice": "0 = none of our data used, 1 = some, 2 = primary source",
+      "competitor_cited": "name of competitor if cited, null if none"
+    }
+  },
+  "results": [
+    {
+      "prompt_id": "tcf-001",
+      "platform": "perplexity",
+      "mentioned": null,
+      "share_of_voice": null,
+      "competitor_cited": null,
+      "notes": ""
+    },
+    {
+      "prompt_id": "tcf-001",
+      "platform": "chatgpt",
+      "mentioned": null,
+      "share_of_voice": null,
+      "competitor_cited": null,
+      "notes": ""
+    },
+    {
+      "prompt_id": "tcf-001",
+      "platform": "gemini",
+      "mentioned": null,
+      "share_of_voice": null,
+      "competitor_cited": null,
+      "notes": ""
+    }
+  ],
+  "summary": {
+    "tradecashflow_mention_rate": null,
+    "tradecashflow_share_of_voice": null,
+    "pawnpass_mention_rate": null,
+    "pawnpass_share_of_voice": null,
+    "note": "Fill in after manual measurement. Mention rate = mentioned/total prompts. Share of voice = avg share_of_voice score."
+  }
+}

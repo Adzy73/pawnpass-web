@@ -7,4 +7,4 @@ export const stripe = stripeSecretKey
   : null;
 
 export const STRIPE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "";
-export const IS_STRIPE_CONFIGURED = !!stripe && !!STRIPE_PUBLISHABLE_KEY;
+export const IS_STRIPE_CONFIGURED = !!stripe;

@@ -16,7 +16,7 @@ export default function PrivacyPromise() {
       icon: "📦",
     },
     {
-      title: "Banking-grade security",
+      title: "Secure & encrypted",
       desc: "Your data is encrypted end-to-end. ID verification via Stripe. We never sell your information.",
       icon: "🔒",
     },
@@ -29,7 +29,7 @@ export default function PrivacyPromise() {
       style={{ background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.04)" }}
     >
       {/* Radial glow — orange privacy shield aura */}
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 pointer-events-none opacity-40">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(255,107,0,0.08) 0%, transparent 60%)" }}
@@ -39,9 +39,9 @@ export default function PrivacyPromise() {
       <div className="relative max-w-5xl mx-auto">
         {/* Blueprint header */}
         <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">FIG.05</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">FIG.05</span>
           <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-          <span className="font-mono text-[10px] text-gray-700 tracking-widest">PRIVACY</span>
+          <span className="font-mono text-[10px] text-gray-300 tracking-widest">PRIVACY</span>
         </div>
 
         {/* Main headline */}

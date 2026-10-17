@@ -1,0 +1,1137 @@
+{
+  "$schema": "https://pawnpass.com.au/catalog-schema.json",
+  "version": "2.0.0",
+  "last_updated": "2026-07-28",
+  "business": {
+    "description": "Australia's first fully autonomous digital pawnbroker. Pawn or sell your items online — snap, quote, drop at a locker, cash in minutes. No store visits, no judgement, no stigma.",
+    "legal_name": "PawnPass Pty Ltd",
+    "trading_names": [
+      "PawnPass",
+      "Pawn Pass"
+    ],
+    "website": "https://pawnpass.com.au",
+    "email": "info@pawnpass.com.au",
+    "phone": "+61439726576",
+    "address": {
+      "street": "311 North East Road",
+      "suburb": "Hampstead Gardens",
+      "state": "SA",
+      "postcode": "5086",
+      "country": "AU"
+    }
+  },
+  "accepted_item_categories": [
+    {
+      "id": "jewellery",
+      "label": "Gold & Jewellery",
+      "icon": "💍",
+      "loan_ltv": 0.4,
+      "buy_ltv": 0.3,
+      "notes": "Live gold pricing — higher LTV for gold items"
+    },
+    {
+      "id": "phones",
+      "label": "Phones",
+      "icon": "📱",
+      "loan_ltv": 0.35,
+      "buy_ltv": 0.25,
+      "notes": "iPhone, Samsung Galaxy, Google Pixel"
+    },
+    {
+      "id": "laptops",
+      "label": "Laptops & Tablets",
+      "icon": "💻",
+      "loan_ltv": 0.3,
+      "buy_ltv": 0.2,
+      "notes": "MacBook, Dell, Lenovo, gaming laptops"
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming",
+      "icon": "🎮",
+      "loan_ltv": 0.35,
+      "buy_ltv": 0.25,
+      "notes": "PS5, Xbox Series X, Nintendo Switch"
+    },
+    {
+      "id": "tools",
+      "label": "Tools & Equipment",
+      "icon": "🔧",
+      "loan_ltv": 0.3,
+      "buy_ltv": 0.2,
+      "notes": "Makita, DeWalt, Milwaukee power tools"
+    },
+    {
+      "id": "cameras",
+      "label": "Cameras",
+      "icon": "📷",
+      "loan_ltv": 0.3,
+      "buy_ltv": 0.2,
+      "notes": "Canon, Nikon, Sony, GoPro"
+    },
+    {
+      "id": "watches",
+      "label": "Watches",
+      "icon": "⌚",
+      "loan_ltv": 0.3,
+      "buy_ltv": 0.2,
+      "notes": "Rolex, Omega, Casio, smart watches"
+    }
+  ],
+  "condition_grades": [
+    {
+      "id": "new",
+      "label": "New / Sealed",
+      "value": "100%",
+      "multiplier": 1.0
+    },
+    {
+      "id": "excellent",
+      "label": "Excellent",
+      "value": "85%",
+      "multiplier": 0.85
+    },
+    {
+      "id": "good",
+      "label": "Good",
+      "value": "70%",
+      "multiplier": 0.7
+    },
+    {
+      "id": "fair",
+      "label": "Fair",
+      "value": "50%",
+      "multiplier": 0.5
+    },
+    {
+      "id": "poor",
+      "label": "Poor / Damaged",
+      "value": "30%",
+      "multiplier": 0.3
+    }
+  ],
+  "pricing": {
+    "loan_rates": {
+      "tiers": [
+        {
+          "loan_amount_range": "Under $1,000",
+          "standard_rate": "35%",
+          "gold_rate": "26.25%"
+        },
+        {
+          "loan_amount_range": "$1,000 - $3,000",
+          "standard_rate": "25%",
+          "gold_rate": "18.75%"
+        },
+        {
+          "loan_amount_range": "$3,000 - $5,000",
+          "standard_rate": "20%",
+          "gold_rate": "15%"
+        },
+        {
+          "loan_amount_range": "Over $5,000",
+          "standard_rate": "Negotiable",
+          "gold_rate": "Negotiable"
+        }
+      ],
+      "fees": {
+        "establishment_fee": "$0",
+        "monthly_fee": "$0",
+        "late_fee": "None",
+        "dishonour_fee": "$0"
+      },
+      "ltv": {
+        "non_gold_loan": "50%",
+        "non_gold_buy": "50%",
+        "gold_loan": "40%",
+        "gold_buy": "30%"
+      }
+    },
+    "transparency_note": "No hidden fees. No establishment fees. No monthly fees. You only pay interest on your loan. If we adjust the valuation after inspection, you can accept the new offer or we return your item free of charge.",
+    "currency": "AUD",
+    "credit_checks": {
+      "required": false,
+      "note": "No credit check — loans secured against collateral"
+    },
+    "fees": {
+      "establishment_fee": "$0",
+      "monthly_fee": "$0",
+      "late_fee": "None",
+      "dishonour_fee": "$0"
+    },
+    "loan_term": {
+      "default_months": 3,
+      "grace_period_days": 30,
+      "extension": "Pay interest to extend"
+    },
+    "interest_structure": {
+      "type": "Simple monthly",
+      "calculation": "Principal × monthly rate"
+    },
+    "what_drives_price_up": [
+      "Original packaging",
+      "Accessories included",
+      "Excellent condition",
+      "Recent model",
+      "High market demand"
+    ],
+    "what_drives_price_down": [
+      "Significant wear",
+      "Missing accessories",
+      "Older model",
+      "Locked to carrier",
+      "Water damage"
+    ]
+  },
+  "categories": {
+    "jewellery": {
+      "label": "Gold & Jewellery",
+      "icon": "💍",
+      "subcategories": [
+        "Ring",
+        "Chain/Necklace",
+        "Bracelet",
+        "Bangle",
+        "Earrings",
+        "Pendant/Charm",
+        "Anklet",
+        "Brooch",
+        "Scrap Gold"
+      ],
+      "attributes": [
+        {
+          "name": "metal",
+          "label": "Metal Type",
+          "type": "select",
+          "options": [
+            "Yellow Gold",
+            "White Gold",
+            "Rose Gold",
+            "Silver",
+            "Platinum",
+            "Two-Tone"
+          ],
+          "required": true
+        },
+        {
+          "name": "carat",
+          "label": "Gold Carat",
+          "type": "select",
+          "options": [
+            "9ct",
+            "10ct",
+            "14ct",
+            "18ct",
+            "22ct",
+            "24ct"
+          ],
+          "required": true,
+          "showIf": {
+            "metal": [
+              "Yellow Gold",
+              "White Gold",
+              "Rose Gold",
+              "Two-Tone"
+            ]
+          }
+        },
+        {
+          "name": "weight_grams",
+          "label": "Weight (grams)",
+          "type": "number",
+          "min": 0.1,
+          "max": 1000,
+          "step": 0.1,
+          "required": true,
+          "hint": "Use a kitchen scale. This determines your scrap gold floor value."
+        },
+        {
+          "name": "gemstone",
+          "label": "Gemstone",
+          "type": "select",
+          "options": [
+            "None",
+            "Diamond",
+            "Sapphire",
+            "Ruby",
+            "Emerald",
+            "Opal",
+            "Pearl",
+            "Other"
+          ],
+          "required": true
+        },
+        {
+          "name": "diamond_carats",
+          "label": "Diamond Carat Weight",
+          "type": "number",
+          "min": 0.01,
+          "max": 10,
+          "step": 0.01,
+          "showIf": {
+            "gemstone": "Diamond"
+          }
+        },
+        {
+          "name": "diamond_cut",
+          "label": "Diamond Cut",
+          "type": "select",
+          "options": [
+            "Round",
+            "Princess",
+            "Oval",
+            "Cushion",
+            "Emerald",
+            "Pear",
+            "Marquise",
+            "Other"
+          ],
+          "showIf": {
+            "gemstone": "Diamond"
+          }
+        },
+        {
+          "name": "brand",
+          "label": "Brand (optional)",
+          "type": "select",
+          "options": [
+            "No Brand",
+            "Tiffany & Co",
+            "Pandora",
+            "Prouds",
+            "Michael Hill",
+            "Cartier",
+            "Bulgari",
+            "Other"
+          ],
+          "required": false
+        }
+      ]
+    },
+    "phones": {
+      "label": "Phones",
+      "icon": "📱",
+      "brands": {
+        "Apple": [
+          "iPhone 15 Pro Max",
+          "iPhone 15 Pro",
+          "iPhone 15 Plus",
+          "iPhone 15",
+          "iPhone 14 Pro Max",
+          "iPhone 14 Pro",
+          "iPhone 14 Plus",
+          "iPhone 14",
+          "iPhone 13 Pro Max",
+          "iPhone 13 Pro",
+          "iPhone 13",
+          "iPhone 12 Pro Max",
+          "iPhone 12 Pro",
+          "iPhone 12",
+          "iPhone 11 Pro Max",
+          "iPhone 11 Pro",
+          "iPhone 11",
+          "iPhone SE (3rd gen)",
+          "iPhone SE (2nd gen)"
+        ],
+        "Samsung": [
+          "Galaxy S24 Ultra",
+          "Galaxy S24+",
+          "Galaxy S24",
+          "Galaxy S23 Ultra",
+          "Galaxy S23+",
+          "Galaxy S23",
+          "Galaxy S22 Ultra",
+          "Galaxy S22+",
+          "Galaxy S22",
+          "Galaxy Z Flip 5",
+          "Galaxy Z Flip 4",
+          "Galaxy Z Fold 5",
+          "Galaxy Z Fold 4",
+          "Galaxy A55",
+          "Galaxy A54",
+          "Galaxy A35"
+        ],
+        "Google": [
+          "Pixel 8 Pro",
+          "Pixel 8",
+          "Pixel 7 Pro",
+          "Pixel 7",
+          "Pixel 6 Pro",
+          "Pixel 6",
+          "Pixel 7a",
+          "Pixel 6a"
+        ],
+        "Oppo": [
+          "Find X5 Pro",
+          "Find X5",
+          "Reno 8 Pro",
+          "Reno 8",
+          "A78",
+          "A77"
+        ],
+        "Motorola": [
+          "Edge 30 Pro",
+          "Edge 30",
+          "Moto G82",
+          "Moto G72",
+          "Moto G52"
+        ],
+        "Nokia": [
+          "G60",
+          "G42",
+          "X30",
+          "C32"
+        ],
+        "Other": []
+      },
+      "attributes": [
+        {
+          "name": "storage",
+          "label": "Storage",
+          "type": "select",
+          "options": [
+            "64GB",
+            "128GB",
+            "256GB",
+            "512GB",
+            "1TB"
+          ],
+          "required": true
+        },
+        {
+          "name": "colour",
+          "label": "Colour",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "battery_health",
+          "label": "Battery Health (%)",
+          "type": "slider",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 85,
+          "required": true,
+          "hint": "Find in Settings > Battery. Below 85% may reduce your offer."
+        },
+        {
+          "name": "network_lock",
+          "label": "Network",
+          "type": "select",
+          "options": [
+            "Unlocked",
+            "Telstra",
+            "Optus",
+            "Vodafone",
+            "Other"
+          ],
+          "required": true
+        }
+      ]
+    },
+    "laptops": {
+      "label": "Laptops & Tablets",
+      "icon": "💻",
+      "subcategories": [
+        "Laptop",
+        "Desktop",
+        "Tablet",
+        "Monitor"
+      ],
+      "brands": {
+        "Apple": [
+          "MacBook Pro 16\" M3 Max",
+          "MacBook Pro 14\" M3 Pro",
+          "MacBook Pro 14\" M3",
+          "MacBook Air 15\" M3",
+          "MacBook Air 13\" M3",
+          "MacBook Air 13\" M2",
+          "MacBook Pro 13\" M2",
+          "iMac 24\" M3",
+          "Mac mini M2",
+          "iPad Pro 12.9\" M2",
+          "iPad Pro 11\" M4",
+          "iPad Air 13\" M2",
+          "iPad 10th gen",
+          "iPad 9th gen",
+          "iPad mini 6"
+        ],
+        "Dell": [
+          "XPS 15",
+          "XPS 14",
+          "XPS 13",
+          "Inspiron 15",
+          "Inspiron 14",
+          "Alienware m18",
+          "Alienware x16",
+          "Latitude 9440",
+          "OptiPlex"
+        ],
+        "HP": [
+          "Spectre x360 14",
+          "Spectre x360 16",
+          "Envy x360 14",
+          "Pavilion 15",
+          "Pavilion 14",
+          "Omen 16",
+          "EliteBook 840",
+          "All-in-One 27"
+        ],
+        "Lenovo": [
+          "ThinkPad X1 Carbon",
+          "ThinkPad T14",
+          "ThinkPad P16",
+          "Yoga 9i 14",
+          "Yoga 7i 16",
+          "IdeaPad 5 Pro",
+          "Legion 5 Pro",
+          "Legion 9i",
+          "ThinkCentre"
+        ],
+        "ASUS": [
+          "ZenBook 14 OLED",
+          "ZenBook Pro 16",
+          "ROG Zephyrus G16",
+          "ROG Strix G16",
+          "TUF Gaming A15",
+          "VivoBook 15",
+          "Chromebook Flip"
+        ],
+        "Acer": [
+          "Swift Go 14",
+          "Swift X 14",
+          "Predator Helios 18",
+          "Aspire 5",
+          "Aspire 3",
+          "Chromebook 515"
+        ],
+        "Microsoft": [
+          "Surface Laptop 7",
+          "Surface Laptop 5",
+          "Surface Pro 11",
+          "Surface Pro 9",
+          "Surface Book 3",
+          "Surface Studio"
+        ],
+        "Samsung": [
+          "Galaxy Tab S9 Ultra",
+          "Galaxy Tab S9+",
+          "Galaxy Tab S9",
+          "Galaxy Tab S8 Ultra",
+          "Galaxy Tab A9+",
+          "Galaxy Book 3 Pro"
+        ],
+        "Other": []
+      },
+      "attributes": [
+        {
+          "name": "cpu",
+          "label": "Processor",
+          "type": "text",
+          "required": false,
+          "placeholder": "e.g. M3 Pro, i7-13700H"
+        },
+        {
+          "name": "ram",
+          "label": "RAM",
+          "type": "select",
+          "options": [
+            "4GB",
+            "8GB",
+            "16GB",
+            "32GB",
+            "64GB+"
+          ],
+          "required": true
+        },
+        {
+          "name": "storage",
+          "label": "Storage",
+          "type": "select",
+          "options": [
+            "128GB",
+            "256GB",
+            "512GB",
+            "1TB",
+            "2TB+"
+          ],
+          "required": true
+        },
+        {
+          "name": "screen_size",
+          "label": "Screen Size",
+          "type": "select",
+          "options": [
+            "11\"",
+            "13\"",
+            "14\"",
+            "15\"",
+            "16\"",
+            "17\"+",
+            "N/A (Desktop)"
+          ],
+          "required": false
+        }
+      ]
+    },
+    "gaming": {
+      "label": "Gaming",
+      "icon": "🎮",
+      "subcategories": [
+        "Console",
+        "Handheld",
+        "Game Disc",
+        "Controller",
+        "Accessory"
+      ],
+      "brands": {
+        "Sony": [
+          "PlayStation 5 Pro",
+          "PlayStation 5 Slim",
+          "PlayStation 5",
+          "PlayStation 4 Pro",
+          "PlayStation 4 Slim",
+          "PlayStation 4",
+          "PSVR2",
+          "DualSense Controller",
+          "DualSense Edge"
+        ],
+        "Microsoft": [
+          "Xbox Series X",
+          "Xbox Series S",
+          "Xbox One X",
+          "Xbox One S",
+          "Xbox One",
+          "Xbox Wireless Controller",
+          "Xbox Elite Controller"
+        ],
+        "Nintendo": [
+          "Switch OLED",
+          "Switch Lite",
+          "Switch (original)",
+          "Wii U",
+          "3DS",
+          "Joy-Con Pair",
+          "Pro Controller"
+        ],
+        "Valve": [
+          "Steam Deck OLED",
+          "Steam Deck LCD"
+        ],
+        "Other": []
+      },
+      "attributes": [
+        {
+          "name": "storage",
+          "label": "Storage",
+          "type": "select",
+          "options": [
+            "Digital Edition",
+            "500GB",
+            "1TB",
+            "2TB",
+            "N/A"
+          ],
+          "required": true,
+          "showIf": {
+            "subcategory": [
+              "Console"
+            ]
+          }
+        },
+        {
+          "name": "controllers_included",
+          "label": "Controllers Included",
+          "type": "select",
+          "options": [
+            "1",
+            "2",
+            "3+"
+          ],
+          "required": false,
+          "showIf": {
+            "subcategory": [
+              "Console"
+            ]
+          }
+        },
+        {
+          "name": "platform",
+          "label": "Platform",
+          "type": "select",
+          "options": [
+            "PS5",
+            "PS4",
+            "Xbox Series X/S",
+            "Xbox One",
+            "Switch",
+            "PC",
+            "Other"
+          ],
+          "required": true,
+          "showIf": {
+            "subcategory": [
+              "Game Disc"
+            ]
+          }
+        }
+      ]
+    },
+    "tools": {
+      "label": "Tools & Equipment",
+      "icon": "🔧",
+      "subcategories": [
+        "Drill",
+        "Impact Driver",
+        "Circular Saw",
+        "Angle Grinder",
+        "Multi-Tool",
+        "Sander",
+        "Nail Gun",
+        "Jigsaw",
+        "Router",
+        "Welder",
+        "Generator",
+        "Compressor",
+        "Other"
+      ],
+      "brands": {
+        "Makita": [
+          "18V LXT",
+          "40V XGT",
+          "240V Corded"
+        ],
+        "Milwaukee": [
+          "M18 Fuel",
+          "M18",
+          "M12"
+        ],
+        "DeWalt": [
+          "20V MAX XR",
+          "20V MAX",
+          "60V FlexVolt",
+          "240V Corded"
+        ],
+        "Ryobi": [
+          "One+ 18V",
+          "240V Corded"
+        ],
+        "AEG": [
+          "18V",
+          "58V"
+        ],
+        "Ozito": [
+          "PXCLTS 18V",
+          "240V Corded"
+        ],
+        "Bosch": [
+          "Blue 18V",
+          "Green 18V",
+          "240V Corded"
+        ],
+        "Hikoki": [
+          "MultiVolt 36V",
+          "18V"
+        ],
+        "Other": []
+      },
+      "attributes": [
+        {
+          "name": "power_source",
+          "label": "Power Source",
+          "type": "select",
+          "options": [
+            "Cordless (Battery)",
+            "Corded (240V)",
+            "Pneumatic"
+          ],
+          "required": true
+        },
+        {
+          "name": "battery_included",
+          "label": "Battery Included",
+          "type": "select",
+          "options": [
+            "Yes (1 battery)",
+            "Yes (2+ batteries)",
+            "No (bare tool only)"
+          ],
+          "required": true,
+          "showIf": {
+            "power_source": "Cordless (Battery)"
+          }
+        },
+        {
+          "name": "charger_included",
+          "label": "Charger Included",
+          "type": "select",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "required": false,
+          "showIf": {
+            "power_source": "Cordless (Battery)"
+          }
+        }
+      ]
+    },
+    "cameras": {
+      "label": "Cameras",
+      "icon": "📷",
+      "subcategories": [
+        "DSLR",
+        "Mirrorless",
+        "Compact",
+        "Action Cam",
+        "Video Camera",
+        "Drone"
+      ],
+      "brands": {
+        "Canon": [
+          "EOS R5",
+          "EOS R6 Mark II",
+          "EOS R8",
+          "EOS R50",
+          "EOS 5D Mark IV",
+          "EOS 90D",
+          "EOS 250D",
+          "PowerShot G7 X Mark III"
+        ],
+        "Nikon": [
+          "Z9",
+          "Z8",
+          "Z6 III",
+          "Z fc",
+          "D850",
+          "D780",
+          "D7500",
+          "Coolpix"
+        ],
+        "Sony": [
+          "A7 IV",
+          "A7R V",
+          "A7C II",
+          "A6700",
+          "ZV-E10",
+          "A1",
+          "RX100 VII"
+        ],
+        "Fujifilm": [
+          "X-T5",
+          "X-H2",
+          "X-H2S",
+          "X-S20",
+          "X100VI",
+          "GFX 100S"
+        ],
+        "Panasonic": [
+          "Lumix S5 II",
+          "Lumix GH6",
+          "Lumix G9 II",
+          "Lumix S5 IIX"
+        ],
+        "GoPro": [
+          "Hero 12 Black",
+          "Hero 11 Black",
+          "Hero 10 Black",
+          "MAX 360"
+        ],
+        "DJI": [
+          "Mini 4 Pro",
+          "Mini 3 Pro",
+          "Air 3",
+          "Mavic 3 Pro",
+          "Avata 2",
+          "Osmo Pocket 3"
+        ],
+        "Other": []
+      },
+      "attributes": [
+        {
+          "name": "lens_included",
+          "label": "Lens Included",
+          "type": "select",
+          "options": [
+            "Body only",
+            "Kit lens",
+            "Premium lens",
+            "Multiple lenses"
+          ],
+          "required": true
+        },
+        {
+          "name": "megapixels",
+          "label": "Megapixels",
+          "type": "select",
+          "options": [
+            "Under 12MP",
+            "12-24MP",
+            "24-45MP",
+            "45MP+"
+          ],
+          "required": false
+        }
+      ]
+    },
+    "watches": {
+      "label": "Watches",
+      "icon": "⌚",
+      "subcategories": [
+        "Luxury Watch",
+        "Smart Watch",
+        "Sports Watch",
+        "Casual Watch"
+      ],
+      "brands": {
+        "Rolex": [
+          "Submariner",
+          "Datejust",
+          "GMT-Master II",
+          "Daytona",
+          "Explorer II",
+          "Sea-Dweller",
+          "Yacht-Master",
+          "Oyster Perpetual"
+        ],
+        "Omega": [
+          "Speedmaster",
+          "Seamaster",
+          "Aqua Terra",
+          "Constellation",
+          "De Ville"
+        ],
+        "Tag Heuer": [
+          "Carrera",
+          "Aquaracer",
+          "Formula 1",
+          "Monaco",
+          "Autavia"
+        ],
+        "Seiko": [
+          "Prospex",
+          "Presage",
+          "5 Sports",
+          "Grand Seiko"
+        ],
+        "Citizen": [
+          "Eco-Drive",
+          "Promaster",
+          "Nighthawk",
+          "Corso"
+        ],
+        "Casio": [
+          "G-Shock",
+          "Edifice",
+          "Pro Trek",
+          "Vintage",
+          "Databank"
+        ],
+        "Apple": [
+          "Watch Ultra 2",
+          "Watch Series 9",
+          "Watch SE 2",
+          "Watch Series 8"
+        ],
+        "Samsung": [
+          "Galaxy Watch 6 Classic",
+          "Galaxy Watch 6",
+          "Galaxy Watch 5 Pro",
+          "Galaxy Watch 5"
+        ],
+        "Garmin": [
+          "Fenix 7",
+          "Epix Pro",
+          "Forerunner 965",
+          "Venu 3",
+          "Instinct 2"
+        ],
+        "Other": []
+      },
+      "attributes": [
+        {
+          "name": "movement",
+          "label": "Movement",
+          "type": "select",
+          "options": [
+            "Automatic",
+            "Quartz",
+            "Solar",
+            "Smart"
+          ],
+          "required": true
+        },
+        {
+          "name": "material",
+          "label": "Case Material",
+          "type": "select",
+          "options": [
+            "Stainless Steel",
+            "Gold",
+            "Two-Tone",
+            "Titanium",
+            "Ceramic",
+            "Plastic"
+          ],
+          "required": true
+        },
+        {
+          "name": "box_papers",
+          "label": "Original Box & Papers",
+          "type": "select",
+          "options": [
+            "Yes (both)",
+            "Box only",
+            "Papers only",
+            "No"
+          ],
+          "required": false
+        }
+      ]
+    }
+  },
+  "conditions": [
+    {
+      "id": "new",
+      "label": "New / Sealed",
+      "mult": "100%"
+    },
+    {
+      "id": "excellent",
+      "label": "Excellent",
+      "mult": "85%"
+    },
+    {
+      "id": "good",
+      "label": "Good",
+      "mult": "70%"
+    },
+    {
+      "id": "fair",
+      "label": "Fair",
+      "mult": "50%"
+    },
+    {
+      "id": "poor",
+      "label": "Poor / Damaged",
+      "mult": "30%"
+    }
+  ],
+  "services": [
+    {
+      "id": "pawn-loans",
+      "name": "Pawn Loans",
+      "description": "Borrow cash against your items. Snap a photo, get an instant quote, drop at a locker, get paid via Osko.",
+      "what_is_included": [
+        "AI-powered valuation",
+        "Insured shipping",
+        "Instant Osko payment",
+        "Digital pledge ticket",
+        "Online loan management"
+      ],
+      "process_steps": [
+        "Snap photo and get quote",
+        "Verify ID online",
+        "Drop at Parcel Locker",
+        "Hub verifies item",
+        "Osko instant payment",
+        "Redeem or forfeit"
+      ],
+      "turnaround": "Same day payment after verification",
+      "url": "/quote"
+    },
+    {
+      "id": "buy-outright",
+      "name": "Buy Outright",
+      "description": "Sell your item directly to PawnPass for cash. No loan, no redemption — walk away.",
+      "what_is_included": [
+        "AI-powered valuation",
+        "Insured shipping",
+        "Instant Osko payment"
+      ],
+      "process_steps": [
+        "Snap photo and get quote",
+        "Verify ID online",
+        "Drop at Parcel Locker",
+        "Hub verifies item",
+        "Osko instant payment"
+      ],
+      "turnaround": "Same day payment after verification",
+      "url": "/quote"
+    }
+  ],
+  "policies": {},
+  "credentials": {},
+  "qa_bank": [
+    {
+      "id": "how-online-pawn-works",
+      "question": "How does online pawnbroking work?",
+      "answer": "Snap a photo of your item, get an instant AI quote, verify your ID, drop your item at an Australia Post Parcel Locker, and receive payment via Osko once we verify your item at our hub.",
+      "publishable": true,
+      "tags": [
+        "general",
+        "process"
+      ]
+    },
+    {
+      "id": "what-items-accepted",
+      "question": "What items do you accept?",
+      "answer": "Gold and jewellery, watches, phones, laptops, tablets, gaming consoles, tools and equipment, cameras, and other items of value.",
+      "publishable": true,
+      "tags": [
+        "items"
+      ]
+    },
+    {
+      "id": "interest-rates",
+      "question": "What are your interest rates?",
+      "answer": "Under $1,000: 35% per month. $1,000-$3,000: 25% per month. $3,000-$5,000: 20% per month. Over $5,000: negotiable. Gold and gold jewellery receives a 25% discount on all tiers.",
+      "publishable": true,
+      "tags": [
+        "rates",
+        "pricing"
+      ]
+    },
+    {
+      "id": "how-to-get-item-back",
+      "question": "How do I get my item back?",
+      "answer": "Pay your loan principal plus accrued interest online via card or Osko. We ship your item back to a Parcel Locker near you, fully insured.",
+      "publishable": true,
+      "tags": [
+        "redemption"
+      ]
+    },
+    {
+      "id": "what-happens-if-i-dont-redeem",
+      "question": "What happens if I don't redeem my item?",
+      "answer": "If you don't redeem within the loan term plus grace period, the item becomes PawnPass property. There is no impact on your credit file — the loan is secured against the item, not your credit history.",
+      "publishable": true,
+      "tags": [
+        "forfeiture"
+      ]
+    },
+    {
+      "id": "how-long-to-get-paid",
+      "question": "How long until I get paid?",
+      "answer": "Once we receive and verify your item at our hub (usually same day), we send payment via Osko instant bank transfer. Money is in your account within minutes.",
+      "publishable": true,
+      "tags": [
+        "payment"
+      ]
+    }
+  ],
+  "faq_published": [
+    "how-online-pawn-works",
+    "what-items-accepted",
+    "interest-rates",
+    "how-to-get-item-back",
+    "what-happens-if-i-dont-redeem",
+    "how-long-to-get-paid"
+  ],
+  "blog_posts": [],
+  "reviews": [],
+  "testimonials": [],
+  "call_transcripts": [],
+  "gaps_flagged": []
+}

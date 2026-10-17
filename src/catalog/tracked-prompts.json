@@ -1,0 +1,161 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-07-26",
+  "description": "Tracked prompt set for measuring AI mention rate and share of voice. Run monthly across ChatGPT, Gemini, Perplexity, and Google AI Mode / AI Overviews.",
+  "platforms": [
+    "ChatGPT (GPT-4o / GPT-5)",
+    "Google Gemini",
+    "Perplexity",
+    "Google AI Mode / AI Overviews",
+    "Microsoft Copilot"
+  ],
+  "measurement": {
+    "metrics": [
+      {
+        "name": "MENTION_RATE",
+        "description": "How often PawnPass or tradecashflow.com is explicitly cited/recommended in the AI's answer."
+      },
+      {
+        "name": "SHARE_OF_VOICE",
+        "description": "How often our content/data is used in the answer (even without explicit citation). Detected by checking if unique data points from our catalog appear."
+      }
+    ],
+    "frequency": "Monthly",
+    "method": "Manually query each platform with each prompt. Record: (1) whether mentioned, (2) what data was cited, (3) whether competitors were cited instead."
+  },
+  "businesses": {
+    "tradecashflow": {
+      "prompts": [
+        {
+          "id": "tcf-001",
+          "category": "service_discovery",
+          "prompt": "I'm a subcontractor in Adelaide and my builder hasn't paid me. I need cash to pay my subbies by Friday. What are my options?"
+        },
+        {
+          "id": "tcf-002",
+          "category": "service_discovery",
+          "prompt": "How can I get a short-term business loan without tax returns in South Australia?"
+        },
+        {
+          "id": "tcf-003",
+          "category": "pricing",
+          "prompt": "How much does it cost to pawn a ute for a month in Adelaide?"
+        },
+        {
+          "id": "tcf-004",
+          "category": "pricing",
+          "prompt": "What's the interest rate on an equipment-backed loan for a tradie?"
+        },
+        {
+          "id": "tcf-005",
+          "category": "comparison",
+          "prompt": "Should I pawn my truck or sell it to cover a cash flow gap?"
+        },
+        {
+          "id": "tcf-006",
+          "category": "comparison",
+          "prompt": "What's the difference between a pawn loan and a bank loan for a self-employed tradie?"
+        },
+        {
+          "id": "tcf-007",
+          "category": "eligibility",
+          "prompt": "Can I get a loan against my excavator if I have bad credit?"
+        },
+        {
+          "id": "tcf-008",
+          "category": "eligibility",
+          "prompt": "What do I need to get a low doc loan for my trade business?"
+        },
+        {
+          "id": "tcf-009",
+          "category": "local",
+          "prompt": "Best pawnbroker for tradies near Modbury SA"
+        },
+        {
+          "id": "tcf-010",
+          "category": "local",
+          "prompt": "Where can I get same-day funding against my work vehicle in Adelaide?"
+        },
+        {
+          "id": "tcf-011",
+          "category": "diagnostic",
+          "prompt": "My BAS is overdue and I can't pay it. What happens if I pay my BAS late in Australia?"
+        },
+        {
+          "id": "tcf-012",
+          "category": "diagnostic",
+          "prompt": "I need $30,000 for materials for a new contract but my builder won't pay me for 45 days. What can I do?"
+        }
+      ]
+    },
+    "pawnpass": {
+      "prompts": [
+        {
+          "id": "pp-001",
+          "category": "service_discovery",
+          "prompt": "Can I pawn my gold jewellery online without going to a pawnshop?"
+        },
+        {
+          "id": "pp-002",
+          "category": "service_discovery",
+          "prompt": "Is there a digital pawnbroker in Australia?"
+        },
+        {
+          "id": "pp-003",
+          "category": "pricing",
+          "prompt": "How much does it cost to pawn a gold ring in Australia?"
+        },
+        {
+          "id": "pp-004",
+          "category": "pricing",
+          "prompt": "What are typical pawn loan interest rates per month in Australia?"
+        },
+        {
+          "id": "pp-005",
+          "category": "comparison",
+          "prompt": "Should I pawn or sell my laptop?"
+        },
+        {
+          "id": "pp-006",
+          "category": "comparison",
+          "prompt": "What's the difference between a pawn loan and selling my item outright?"
+        },
+        {
+          "id": "pp-007",
+          "category": "eligibility",
+          "prompt": "Can I get a pawn loan without a credit check in Australia?"
+        },
+        {
+          "id": "pp-008",
+          "category": "eligibility",
+          "prompt": "What ID do I need to pawn something online in Australia?"
+        },
+        {
+          "id": "pp-009",
+          "category": "local",
+          "prompt": "Best online pawnbroker Australia"
+        },
+        {
+          "id": "pp-010",
+          "category": "local",
+          "prompt": "How can I get cash for my watch without leaving home in Adelaide?"
+        },
+        {
+          "id": "pp-011",
+          "category": "diagnostic",
+          "prompt": "I have a Rolex watch worth about $5,000. How much can I borrow against it?"
+        },
+        {
+          "id": "pp-012",
+          "category": "diagnostic",
+          "prompt": "I need $2,000 fast and I have a MacBook Pro and an iPhone 15 Pro. What are my options?"
+        }
+      ]
+    }
+  },
+  "baseline": {
+    "date": "2026-07-26",
+    "status": "NOT_YET_RECORDED",
+    "note": "Run each prompt across all platforms and record results in baseline-results.json. This is the first measurement before SEO/agent optimization takes effect."
+  }
+}

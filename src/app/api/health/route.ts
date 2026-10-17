@@ -7,18 +7,24 @@ export async function GET() {
     goldapi: !!process.env.GOLDAPI_KEY,
     database: !!process.env.DATABASE_URL,
     session: !!process.env.SESSION_SECRET,
+    stripe: !!process.env.STRIPE_SECRET_KEY,
+    tavily: !!process.env.TAVILY_API_KEY,
+    mapbox: !!process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
+    // Optional services (don't affect health status)
     openrouter: !!process.env.OPENROUTER_API_KEY,
     gmail: !!process.env.GMAIL_USER,
   };
 
-  const allHealthy = Object.values(checks).every(Boolean);
+  // Core services that must be healthy
+  const coreKeys = ["site", "perplexity", "goldapi", "database", "session", "stripe"];
+  const coreHealthy = coreKeys.every((k) => checks[k]);
 
   return NextResponse.json(
     {
-      status: allHealthy ? "healthy" : "degraded",
+      status: coreHealthy ? "healthy" : "degraded",
       timestamp: new Date().toISOString(),
       checks,
     },
-    { status: allHealthy ? 200 : 503 }
+    { status: coreHealthy ? 200 : 503 }
   );
 }

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "name": "PawnPass Agent",
+  "description": "AI agent for PawnPass, Australia's first digital pawnbroker. Can answer questions about pawn loans, check eligibility, quote pricing, and initiate loan applications.",
+  "url": "https://pawnpass.com.au",
+  "version": "1.0.0",
+  "capabilities": [
+    {
+      "name": "answer_questions",
+      "description": "Answer questions about PawnPass services, rates, accepted items, process, and policies using the knowledge catalog.",
+      "endpoint": "https://pawnpass.com.au/api/catalog",
+      "methods": ["GET"]
+    },
+    {
+      "name": "check_eligibility",
+      "description": "Check if a customer is eligible for a pawn loan or buy outright. Requires: age 18+, owns item outright, valid Australian ID, Australian bank account.",
+      "endpoint": "https://pawnpass.com.au/api/catalog",
+      "methods": ["GET"]
+    },
+    {
+      "name": "quote_pricing",
+      "description": "Get an instant AI-powered valuation for an item. Submit category, brand, model, condition, and photos to receive loan amount, buy amount, and interest rate.",
+      "endpoint": "https://pawnpass.com.au/api/valuation",
+      "methods": ["POST"],
+      "request_schema": {
+        "category": "string (required) — one of: jewellery-gold, watches, phones, laptops, tablets, gaming, tools, cameras, other",
+        "condition": "string (required) — one of: new, excellent, good, fair, poor",
+        "brand": "string (optional)",
+        "model": "string (optional)",
+        "description": "string (optional)",
+        "photos": "string[] (optional) — base64-encoded images"
+      },
+      "response_schema": {
+        "estimated_value": "number",
+        "loan_amount": "number",
+        "buy_amount": "number",
+        "interest_rate": "string",
+        "is_gold": "boolean",
+        "confidence": "number",
+        "mock": "boolean"
+      }
+    },
+    {
+      "name": "initiate_application",
+      "description": "Redirect customer to the online application flow. The full flow includes: quote → ID verification → shipping → payment.",
+      "endpoint": "https://pawnpass.com.au/quote",
+      "methods": ["GET"]
+    },
+    {
+      "name": "find_shipping_options",
+      "description": "Find nearby Australia Post Parcel Lockers for item drop-off, or arrange home pickup.",
+      "endpoint": "https://pawnpass.com.au/api/shipping",
+      "methods": ["POST"],
+      "request_schema": {
+        "action": "string — one of: find_lockers, create_shipment, track_shipment, get_label",
+        "postcode": "string (for find_lockers)"
+      }
+    }
+  ],
+  "knowledge_catalog": "https://pawnpass.com.au/api/catalog",
+  "openapi_spec": "https://pawnpass.com.au/.well-known/openapi.json",
+  "llms_txt": "https://pawnpass.com.au/llms.txt",
+  "contact": {
+    "email": "info@pawnpass.com.au",
+    "phone": "+61439726576"
+  },
+  "authentication": {
+    "type": "none",
+    "description": "Public read-only catalog and valuation API. Transactional endpoints (loans, shipping) require session authentication."
+  },
+  "escalation": {
+    "description": "Complex queries, disputes, and valuation adjustments are escalated to human support via email (info@pawnpass.com.au) or phone (0439 726 576). Response target: within 24 hours.",
+    "email": "info@pawnpass.com.au",
+    "phone": "+61439726576"
+  }
+}

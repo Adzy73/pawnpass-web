@@ -1,8 +1,9 @@
 // Simple in-memory rate limiter for Vercel serverless functions
 // Note: Per-instance on Vercel — not perfect but stops casual abuse
 
+const isDev = process.env.NODE_ENV !== "production";
 const WINDOW_MS = 60 * 60 * 1000; // 1 hour
-const MAX_REQUESTS = 10; // 10 valuation requests per IP per hour
+const MAX_REQUESTS = isDev ? 100 : 10; // 100 in dev, 10 in production per IP per hour
 
 interface RateEntry {
   count: number;
