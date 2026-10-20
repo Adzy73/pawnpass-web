@@ -8,7 +8,7 @@ import { eq } from "drizzle-orm";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { token, loanId, customerName, agreed } = body;
+  const { token, loanId, customerName, agreed, signatureImage, autoPayConsent, returnLockerId } = body;
 
   if (!token || !loanId || !customerName || !agreed) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -50,7 +50,10 @@ export async function POST(request: NextRequest) {
     signingStatus: "signed",
     signedAt,
     signedBy: customerName,
-    signatureMethod: "digital",
+    signatureImage: signatureImage || null,
+    autoPayConsent: !!autoPayConsent,
+    returnLockerId: returnLockerId || null,
+    signatureMethod: signatureImage ? "drawn_and_typed" : "digital_type",
     ipAddress: request.headers.get("x-forwarded-for") || "unknown",
     userAgent: request.headers.get("user-agent") || "unknown",
   };

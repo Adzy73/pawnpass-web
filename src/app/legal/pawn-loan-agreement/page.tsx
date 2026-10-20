@@ -48,7 +48,7 @@ export default function PawnLoanAgreement() {
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Colour</td><td className="p-3 text-white">[COLOUR]</td></tr>
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Distinguishing features</td><td className="p-3 text-white">[DISTINGUISHING_FEATURES]</td></tr>
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Unique identification code</td><td className="p-3 text-white font-mono">[ID_CODE]</td></tr>
-              <tr><td className="p-3 text-gray-400">Goods kept at</td><td className="p-3 text-white">311 North East Road, Hampstead Gardens SA 5086</td></tr>
+              <tr><td className="p-3 text-gray-400">Goods receiving hub</td><td className="p-3 text-white">PawnPass Hub — Parcel Locker 51 (APCN 1000146016), Greenacres SA 5086 / 311 North East Road, Hampstead Gardens SA 5086</td></tr>
             </tbody>
           </table>
           {false && <p className="text-xs text-gray-500 mt-2">If this ticket covers more than one item, the items [may / may not] be separately redeemed.</p>}
