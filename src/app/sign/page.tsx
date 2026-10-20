@@ -67,10 +67,22 @@ function SignContent() {
     if (!ctx) return;
 
     ctx.strokeStyle = "#FF6B00";
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 4;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
   }, [loan]);
+
+  const getCoordinates = (canvas: HTMLCanvasElement, e: React.MouseEvent | React.TouchEvent) => {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    return {
+      x: (clientX - rect.left) * scaleX,
+      y: (clientY - rect.top) * scaleY,
+    };
+  };
 
   const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
     setIsDrawing(true);
@@ -79,12 +91,14 @@ function SignContent() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+    ctx.strokeStyle = "#FF6B00";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
 
+    const { x, y } = getCoordinates(canvas, e);
     ctx.beginPath();
-    ctx.moveTo(clientX - rect.left, clientY - rect.top);
+    ctx.moveTo(x, y);
   };
 
   const draw = (e: React.MouseEvent | React.TouchEvent) => {
@@ -94,11 +108,13 @@ function SignContent() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+    ctx.strokeStyle = "#FF6B00";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
 
-    ctx.lineTo(clientX - rect.left, clientY - rect.top);
+    const { x, y } = getCoordinates(canvas, e);
+    ctx.lineTo(x, y);
     ctx.stroke();
     setHasDrawn(true);
   };
@@ -123,7 +139,14 @@ function SignContent() {
   };
 
   async function handleSign() {
-    if (!customerName.trim() || !agreedTerms) return;
+    if (!customerName.trim()) {
+      setError("Please enter your full legal name before signing.");
+      return;
+    }
+    if (!agreedTerms) {
+      setError("Please check the declaration box to confirm ownership and agree to contract terms.");
+      return;
+    }
     setSigning(true);
     setError("");
 
@@ -419,11 +442,18 @@ function SignContent() {
             </span>
           </label>
 
+          {/* Error Banner */}
+          {error && (
+            <div className="p-3.5 rounded-xl bg-amber-500/20 border border-amber-500 text-amber-300 text-xs font-semibold">
+              ⚠️ {error}
+            </div>
+          )}
+
           {/* Submit Button */}
           <button
             type="button"
             onClick={handleSign}
-            disabled={!customerName.trim() || !agreedTerms || signing}
+            disabled={signing}
             className="w-full rounded-full py-4 text-base font-bold text-white transition-all hover:scale-[1.01] disabled:opacity-40"
             style={{ background: "#FF6B00", boxShadow: "0 0 25px rgba(255,107,0,0.3)" }}
           >
