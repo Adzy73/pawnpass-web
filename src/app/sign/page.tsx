@@ -223,12 +223,27 @@ function SignContent() {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={() => window.print()}
-                className="print:hidden px-4 py-2 rounded-full text-xs font-bold text-white bg-[#FF6B00] hover:scale-105 transition-all"
-              >
-                🖨 Print / Save PDF
-              </button>
+              <div className="print:hidden flex items-center gap-2">
+                <a
+                  href={`/api/contracts/pdf?loan=${loanId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-full text-xs font-bold text-white bg-[#FF6B00] hover:scale-105 transition-all inline-flex items-center gap-1.5 shadow-md"
+                >
+                  <span>📄 Open Official PDF</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const pdfUrl = `/api/contracts/pdf?loan=${loanId}`;
+                    const printWin = window.open(pdfUrl, "_blank");
+                    if (!printWin) window.print();
+                  }}
+                  className="px-3.5 py-2 rounded-full text-xs font-bold text-gray-200 border border-white/20 hover:text-white hover:border-white/40 transition-all inline-flex items-center gap-1"
+                >
+                  <span>🖨 Print</span>
+                </button>
+              </div>
             </div>
 
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 print:border-emerald-700 text-emerald-300 print:text-emerald-900 text-xs sm:text-sm font-medium flex items-center gap-2">
