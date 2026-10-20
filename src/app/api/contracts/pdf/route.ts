@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
       <ul>
         <li><strong>Redemption Period:</strong> 90 days from agreement date. Redeemable anytime by paying principal + accrued interest.</li>
         <li><strong>Auto-Pay Interest:</strong> Monthly interest payment extends redemption by 30 days.</li>
-        <li><strong>Unredeemed Goods &amp; Residual Equity:</strong> If forfeited, PawnPass sells the item under SA Section 14(3) for best price reasonably obtainable. Any surplus residual equity (RE = Sale Price − (Principal + Interest + COS)) is returned to borrower.</li>
+        <li><strong>Unredeemed Goods:</strong> If forfeited, PawnPass takes ownership and sells the item under SA Section 14(3) for the best price reasonably obtainable.</li>
       </ul>
     </div>
 

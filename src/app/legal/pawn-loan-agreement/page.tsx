@@ -51,13 +51,7 @@ export default function PawnLoanAgreement() {
           <p>You may extend the agreement by paying the monthly interest amount on or before your due date. To guarantee your collateral is never lost, you may enable the <strong>Auto-Pay Monthly Interest Agreement</strong> in your PawnPass dashboard.</p>
 
           <h2 className="text-lg font-semibold text-white mt-8">5. Forfeiture and Sale of Unredeemed Goods</h2>
-          <p>If the Collateral is not redeemed or extended by the due date, PawnPass is authorized under section 14(3) of the Second-hand Dealers and Pawnbrokers Act 1996 (SA) to sell the goods for the best price reasonably obtainable.</p>
-
-          <h3 className="text-base font-semibold text-white mt-4">5.1 Residual Equity Formula</h3>
-          <div className="rounded-lg p-4 mt-2" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
-            <p className="text-sm text-gray-300 font-mono">Residual Equity (RE) = Sale Price − (Loan Principal + Unpaid Interest + Cost of Sale)</p>
-          </div>
-          <p className="mt-2">Where <strong className="text-white">Cost of Sale (COS)</strong> = 51% of sale price + 0.04% per day of outstanding balance until sold.</p>
+          <p>If the Collateral is not redeemed or extended by the due date, PawnPass is authorized under section 14(3) of the Second-hand Dealers and Pawnbrokers Act 1996 (SA) to take ownership and sell the goods for the best price reasonably obtainable.</p>
 
           <h2 className="text-lg font-semibold text-white mt-8">6. Pledgor Statutory Declaration &amp; Indemnity</h2>
           <p>The Pledgor declares under statutory penalty that:</p>

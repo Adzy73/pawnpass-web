@@ -291,7 +291,7 @@ function SignContent() {
                 <ul className="list-disc pl-5 space-y-1 text-gray-400 print:text-black text-xs">
                   <li>Redemption Period is 90 days. You may redeem your item anytime by paying principal + monthly interest.</li>
                   <li>Monthly interest extends your loan by 30 days. Auto-Pay Interest is authorized to protect your collateral.</li>
-                  <li>If unredeemed, item is sold under SA Section 14(3) with Residual Equity returned: RE = Sale Price - (Principal + Interest + COS).</li>
+                  <li>If unredeemed, the item is forfeited and sold under SA Section 14(3) for the best price reasonably obtainable.</li>
                 </ul>
               </div>
 
@@ -369,7 +369,7 @@ function SignContent() {
             By signing below, you agree to pledge the collateral specified above. Interest is charged monthly. You have 90 days to redeem your item or extend by paying monthly interest.
           </p>
           <p className="text-gray-400">
-            If forfeited, PawnPass sells the item under SA Section 14(3) for best price obtainable and calculates Residual Equity: <strong className="text-white font-mono">RE = Sale Price - (Principal + Interest + COS)</strong>.
+            If forfeited, PawnPass takes ownership and sells the item under SA Section 14(3) for the best price reasonably obtainable.
           </p>
           <a href={`/legal/${type === "pawn" ? "pawn-loan-agreement" : "buy-outright-agreement"}`} target="_blank" className="text-xs font-bold text-[#FF6B00] underline inline-block">
             Read full SA Pawnbrokers Act 1996 Contract Terms →
