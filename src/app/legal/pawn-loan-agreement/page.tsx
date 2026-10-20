@@ -31,7 +31,6 @@ export default function PawnLoanAgreement() {
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Loan amount (principal)</td><td className="p-3 text-white font-bold">${`[PRINCIPAL]`}</td></tr>
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Monthly interest charge</td><td className="p-3 text-[#FF6B00] font-bold">{`[RATE]`}%/month (${`[MONTHLY_INTEREST]`})</td></tr>
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Statutory Equivalent Annual Interest Rate (APR)</td><td className="p-3 text-white font-mono">{`[APR_RATE]`} p.a. (SA Reg 11(j))</td></tr>
-              <tr className="border-b border-white/10"><td className="p-3 text-gray-400">7-Day Fast Redemption Discount</td><td className="p-3 text-emerald-400 font-medium">10% discount on total repayment if redeemed within 7 days</td></tr>
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Redemption period end date</td><td className="p-3 text-white font-medium">{`[DUE_DATE]`}</td></tr>
               <tr className="border-b border-white/10"><td className="p-3 text-gray-400">Establishment, monthly &amp; late fees</td><td className="p-3 text-emerald-400 font-medium">$0.00 (Zero extra fees)</td></tr>
             </tbody>
@@ -51,7 +50,7 @@ export default function PawnLoanAgreement() {
           <p>The statutory redemption period is 90 days from the date of this agreement. You may redeem the Collateral at any time by paying the principal plus accrued interest.</p>
           <p>You may extend the agreement by paying the monthly interest amount on or before your due date. To guarantee your collateral is never lost, you may enable the <strong>Auto-Pay Monthly Interest Agreement</strong> in your PawnPass dashboard.</p>
 
-          <h2 className="text-lg font-semibold text-white mt-8">5. Forfeiture, Sale &amp; 12-Month Surplus Recovery</h2>
+          <h2 className="text-lg font-semibold text-white mt-8">5. Forfeiture and Sale of Unredeemed Goods</h2>
           <p>If the Collateral is not redeemed or extended by the due date, PawnPass is authorized under section 14(3) of the Second-hand Dealers and Pawnbrokers Act 1996 (SA) to sell the goods for the best price reasonably obtainable.</p>
 
           <h3 className="text-base font-semibold text-white mt-4">5.1 Residual Equity Formula</h3>
@@ -59,9 +58,6 @@ export default function PawnLoanAgreement() {
             <p className="text-sm text-gray-300 font-mono">Residual Equity (RE) = Sale Price − (Loan Principal + Unpaid Interest + Cost of Sale)</p>
           </div>
           <p className="mt-2">Where <strong className="text-white">Cost of Sale (COS)</strong> = 51% of sale price + 0.04% per day of outstanding balance until sold.</p>
-
-          <h3 className="text-base font-semibold text-white mt-4">5.2 12-Month Surplus Claim Period</h3>
-          <p>Within 12 months from the sale date, the Pledgor is entitled to claim any positive Residual Equity surplus remaining after sale. Details are recorded in the PawnPass register of sale and available upon request.</p>
 
           <h2 className="text-lg font-semibold text-white mt-8">6. Pledgor Statutory Declaration &amp; Indemnity</h2>
           <p>The Pledgor declares under statutory penalty that:</p>
