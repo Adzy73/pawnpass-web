@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 
 export async function GET(request: NextRequest) {
   const loanId = request.nextUrl.searchParams.get("loan");
+  const isDownload = request.nextUrl.searchParams.get("download") === "true";
 
   if (!loanId) {
     return new NextResponse("Missing loan ID", { status: 400 });
@@ -129,7 +130,7 @@ export async function GET(request: NextRequest) {
   return new NextResponse(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "Content-Disposition": `inline; filename="PawnPass-PledgeTicket-${loan.loanId}.html"`,
+      "Content-Disposition": `${isDownload ? "attachment" : "inline"}; filename="PawnPass-PledgeTicket-${loan.loanId}.html"`,
     },
   });
 }
